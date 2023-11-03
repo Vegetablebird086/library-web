@@ -5,34 +5,34 @@
       <el-card class="filter-container" shadow="never">
         <div>
           <i class="el-icon-search"></i>
-          <span>筛选搜索</span>
+          <span>Search</span>
           <el-button
               style="float: right"
               @click="handleSearchList()"
               type="primary"
               size="small">
-            查询结果
+            Result
           </el-button>
           <el-button
               style="float: right;margin-right: 15px"
               @click="handleResetSearch()"
               size="small">
-            重置
+            Reset
           </el-button>
         </div>
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
             <el-form-item label="输入搜索：">
-              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="关键词"></el-input>
+              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
             <el-form-item label="书籍编号：">
               <el-input style="width: 203px" v-model="searchParams.bookId" placeholder="书籍编号"></el-input>
             </el-form-item>
-            <el-form-item label="书籍出版商：">
+            <el-form-item label="Publisher">
               <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="书籍出版商"></el-input>
             </el-form-item>
-            <el-form-item label="书籍分类：">
+            <el-form-item label="Book Category：">
               <el-cascader
                   clearable
                   v-model="selectCategoryValue"
@@ -117,9 +117,9 @@
             label="操作"
             width="220">
           <template slot-scope="scope">
-            <el-button @click="handleLendBook(scope.row)" type="primary" size="small">借书</el-button>
-            <el-button @click="handleReturnBook(scope.row)" type="success" size="small">还书</el-button>
-            <el-button @click="handleCollectionBook(scope.row)" type="success" size="small">收藏</el-button>
+            <el-button @click="handleLendBook(scope.row)" type="primary" size="small">Borrow</el-button>
+            <el-button @click="handleReturnBook(scope.row)" type="success" size="small">Return</el-button>
+            <el-button @click="handleCollectionBook(scope.row)" type="success" size="small">Star</el-button>
           </template>
         </el-table-column>
 
@@ -210,7 +210,7 @@ export default {
       this.multipleSelection = val;
     },
     // 表格操作
-    // 借书
+    // Borrow
     handleLendBook(row) {
       console.log([row.id])
       console.log(JSON.stringify(row.id))
@@ -228,7 +228,7 @@ export default {
           }
       })
     },
-    // 还书
+    // Return
     handleReturnBook(row) {
       console.log([row.id])
       this.requestBook.post("/book/user/return", [row.id]).then(res => {
@@ -255,7 +255,7 @@ export default {
       this.requestBook.post("/book/user/lend", JSON.stringify(ids)).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '借书成功',
+            message: 'Borrow successfully',
             type: 'success'
           });
         } else {
@@ -274,7 +274,7 @@ export default {
       this.requestBook.post("/book/user/return", ids).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '还书成功',
+            message: 'Return successfully成功',
             type: 'success'
           });
         } else {
@@ -285,7 +285,7 @@ export default {
         }
       })
     },
-    // 收藏书籍
+    // Star book
     handleCollectionBook(row) {
       let collection = {}
       collection.bookId = row.id
@@ -293,12 +293,12 @@ export default {
        this.request.post("/member/usercollection/save", JSON.stringify(collection)).then(res => {
          if (res.code == 200) {
            this.$message({
-             message: '收藏成功',
+             message: 'Star successfully',
              type: 'success'
            });
          } else {
            this.$message({
-             message: '收藏失败',
+             message: 'Star 失败',
              type: 'warning'
            });
          }

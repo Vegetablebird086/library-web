@@ -36,33 +36,33 @@ const routes = [
     path: '/',
     name: 'layout',
     redirect: '/home',
-    meta: { title: '首页'},
+    meta: { title: 'Home'},
     component:() => (import("../views/Manage")),
     children: [
         // 首页
       {
         path: '/home',
-        name: '首页',
-        meta: { title: '首页'},
+        name: 'Home',
+        meta: { title: 'Home'},
         component: () => (import("../views/Home"))
       },
         // 书籍
       {
         path: 'bms',
-        name: '书籍',
-        meta: { title: '书籍'},
+        name: 'Book',
+        meta: { title: 'Book'},
         component: () => (import("../views/bms/index")),
         children: [
           {
             path: 'book',
-            name: '书籍列表',
-            meta: { title: '书籍列表'},
+            name: 'Book list',
+            meta: { title: 'Book list'},
             component: () => (import("../views/bms/Book"))
           },
           {
             path: 'bookManage',
-            name: '书籍管理',
-            meta: { title: '书籍管理'},
+            name: 'book Manage',
+            meta: { title: 'book Manage'},
             component: () => (import("../views/bms/BookManager"))
           },
         ]
@@ -70,20 +70,20 @@ const routes = [
         // 用户
       {
         path: 'ums',
-        name: '用户',
-        meta: { title: '用户'},
+        name: 'User',
+        meta: { title: 'User'},
         component: () => (import("../views/ums/index")),
         children: [
           {
             path: 'user',
-            name: '用户列表',
+            name: 'User List',
             meta: { title: '用户列表'},
             component: () => (import("../views/ums/User"))
           },
           {
             path: 'userInfo',
-            name: '基本信息',
-            meta: { title: '基本信息'},
+            name: 'User Information',
+            meta: { title: 'User Information'},
             component: () => import('../views/ums/UserInfo')
           },
           {
@@ -94,14 +94,14 @@ const routes = [
           },
           {
             path: 'userCollection',
-            name: '收藏记录',
-            meta: { title: '收藏记录'},
+            name: 'Star record',
+            meta: { title: 'Star record'},
             component: () => import('../views/ums/UserCollection')
           },
           {
             path: 'userHistory',
-            name: '借书记录',
-            meta: { title: '借书记录'},
+            name: 'Borrow record记录',
+            meta: { title: 'Borrow record记录'},
             component: () => import('../views/ums/UserHistory')
           },
         ],

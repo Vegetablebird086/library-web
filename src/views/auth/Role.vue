@@ -5,19 +5,19 @@
       <el-card class="filter-container" shadow="never">
         <div>
           <i class="el-icon-search"></i>
-          <span>筛选搜索</span>
+          <span>Search</span>
           <el-button
               style="float: right"
               @click="handleSearchList()"
               type="primary"
               size="small">
-            查询结果
+            Result
           </el-button>
           <el-button
               style="float: right;margin-right: 15px"
               @click="handleResetSearch()"
               size="small">
-            重置
+            Reset
           </el-button>
         </div>
 
@@ -29,7 +29,7 @@
             <el-form-item label="角色编号：">
               <el-input style="width: 203px" v-model="searchParams.id" placeholder="角色编号"></el-input>
             </el-form-item>
-<!--            <el-form-item label="书籍出版商：">-->
+<!--            <el-form-item label="Publisher">-->
 <!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="书籍出版商"></el-input>-->
 <!--            </el-form-item>-->
 <!--            <el-form-item label="书籍分类：">-->

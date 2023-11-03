@@ -5,7 +5,7 @@
         padding: 20px; border-radius: 10px
         '
     >
-      <div style="margin: 20px 0; text-align: center; font-size: 24px"><b>登 录</b></div>
+      <div style="margin: 20px 0; text-align: center; font-size: 24px"><b>Login</b></div>
       <el-form :model="user" :rules="rules" ref="userForm">
         <el-form-item prop="username">
           <el-input size="medium" style="margin: 10px 0" prefix-icon="el-icon-user" v-model="user.username"></el-input>
@@ -15,8 +15,8 @@
                     v-model="user.password"></el-input>
         </el-form-item>
         <el-form-item >
-          <el-button type="warning" size="small" autocomplete="off" @click="$router.push('/register')">注册</el-button>
-          <el-button type="primary" size="small" autocomplete="off" @click="login">登录</el-button>
+          <el-button type="warning" size="small" autocomplete="off" @click="$router.push('/register')">Register </el-button>
+          <el-button type="primary" size="small" autocomplete="off" @click="login">Login</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -27,18 +27,18 @@
 import router, {setRoutes} from "@/router";
 
 export default {
-  name: "Login",
+  name: "登录",
   data() {
     return {
       user: {},
       rules: {
         username: [
-          {required: true, message: '请输入用户名', trigger: 'blur'},
-          {min: 3, max: 10, message: '长度在 3 到 5 个字符', trigger: 'blur'}
+          {required: true, message: 'Please input user name', trigger: 'blur'},
+          {min: 3, max: 10, message: 'The length is 3 to 5 characters', trigger: 'blur'}
         ],
         password: [
-          {required: true, message: '请输入密码', trigger: 'blur'},
-          {min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur'}
+          {required: true, message: 'Please input password', trigger: 'blur'},
+          {min: 1, max: 20, message: 'The length is 1 to 20 characters', trigger: 'blur'}
         ]
       }
     }
@@ -58,7 +58,7 @@ export default {
               // localStorage.setItem("menus", JSON.stringify(res.data.menus))  // 存储用户信息到浏览器
               // 动态设置当前用户的路由
               setRoutes()
-              this.$message.success("登录成功")
+              this.$message.success("Login successfully")
 
               // 默认管理员
               router.push("/")

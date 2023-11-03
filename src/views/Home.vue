@@ -3,7 +3,7 @@
     <el-row :gutter="10" style="margin-bottom: 60px">
       <el-col :span="6">
         <el-card style="color: #409EFF">
-          <div><i class="el-icon-user-solid" /> 用户总数</div>
+          <div><i class="el-icon-user-solid" /> Total user</div>
           <div style="padding: 10px 0; text-align: center; font-weight: bold">
             232
           </div>
@@ -62,7 +62,7 @@ export default {
   mounted() {  // 页面元素渲染之后再触发
     var option = {
       title: {
-        text: '各季度会员数量统计',
+        text: '各quarter会员数量统计',
         subtext: '趋势图',
         left: 'center'
       },
@@ -75,7 +75,7 @@ export default {
       },
       xAxis: {
         type: 'category',
-        data: ["第一季度", "第二季度", "第三季度", "第四季度"]
+        data: ["The firstquarter", "The secondquarter", "The thirdquarter", "The forthquarter"]
       },
       yAxis: {
         type: 'value'
@@ -108,7 +108,7 @@ export default {
 
     var pieOption = {
       title: {
-        text: '各季度会员数量统计',
+        text: '各quarter会员数量统计',
         subtext: '比例图',
         left: 'center'
       },
@@ -165,10 +165,10 @@ export default {
             }
           },
           data: [
-            {name: "第一季度", value: 5},
-            {name: "第二季度", value: 6},
-            {name: "第三季度", value: 7},
-            {name: "第四季度", value: 8}
+            {name: "The firstquarter", value: 5},
+            {name: "The secondquarter", value: 6},
+            {name: "The thirdquarter", value: 7},
+            {name: "The forthquarter", value: 8}
             ],  // 填空
           emphasis: {
             itemStyle: {
@@ -204,10 +204,10 @@ export default {
     //
     //
     //   pieOption.series[0].data = [
-    //     {name: "第一季度", value: res.data[0]},
-    //     {name: "第二季度", value: res.data[1]},
-    //     {name: "第三季度", value: res.data[2]},
-    //     {name: "第四季度", value: res.data[3]},
+    //     {name: "The firstquarter", value: res.data[0]},
+    //     {name: "The secondquarter", value: res.data[1]},
+    //     {name: "The thirdquarter", value: res.data[2]},
+    //     {name: "The forthquarter", value: res.data[3]},
     //   ]
     //   pieChart.setOption(pieOption)
     // })

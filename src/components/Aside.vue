@@ -10,7 +10,7 @@
   >
     <div style="height: 60px; line-height: 60px; text-align: center">
       <img src="../assets/logo.png" alt="" style="width: 20px; position: relative; top: 5px;">
-      <b style="color: white; margin-left: 5px" v-show="logoTextShow">图书后台管理系统</b>
+      <b style="color: white; margin-left: 5px" v-show="logoTextShow">library management system</b>
     </div>
     <div>
 <!--      -->
@@ -18,27 +18,27 @@
 <!--        // 大标题-->
         <template slot="title" ><i class="el-icon-s-home"></i>
           <router-link to="/home"  style="text-decoration:none; color:#fff;">
-            首页
+            Home
           </router-link>
         </template>
       </el-submenu>
       <el-submenu index="2">
         <template slot="title"><i class="el-icon-notebook-1"></i>
-          <span slot="title">书籍</span>
+          <span slot="title">Book</span>
         </template>
         <!--          // 子标题-->
-        <el-menu-item index="/bms/book">书籍列表</el-menu-item>
-        <el-menu-item index="/bms/bookManage">书籍管理</el-menu-item>
+        <el-menu-item index="/bms/book">Book List</el-menu-item>
+        <el-menu-item index="/bms/bookManage">Book Management</el-menu-item>
       </el-submenu>
       <el-submenu index="3">
         <template slot="title"><i class="el-icon-user-solid"></i>
-          <span slot="title">用户</span>
+          <span slot="title">User</span>
         </template>
         <!--          // 子标题-->
-        <el-menu-item index="/ums/user">用户列表</el-menu-item>
-        <el-menu-item index="/ums/userInfo">基本信息</el-menu-item>
-        <el-menu-item index="/ums/userCollection">收藏记录</el-menu-item>
-        <el-menu-item index="/ums/userHistory">借书记录</el-menu-item>
+        <el-menu-item index="/ums/user">User List</el-menu-item>
+        <el-menu-item index="/ums/userInfo">User Information</el-menu-item>
+        <el-menu-item index="/ums/userCollection">Like</el-menu-item>
+        <el-menu-item index="/ums/userHistory">Lend</el-menu-item>
       </el-submenu>
       <el-submenu index="4">
         <template slot="title"><i class="el-icon-unlock"></i>

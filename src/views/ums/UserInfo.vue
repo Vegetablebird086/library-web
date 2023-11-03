@@ -5,31 +5,31 @@
       <el-card class="filter-container" shadow="never">
         <div>
           <i class="el-icon-search"></i>
-          <span>筛选搜索</span>
+          <span>Search</span>
           <el-button
               style="float: right"
               @click="handleSearchList()"
               type="primary"
               size="small">
-            查询结果
+            Result
           </el-button>
           <el-button
               style="float: right;margin-right: 15px"
               @click="handleResetSearch()"
               size="small">
-            重置
+            Reset
           </el-button>
         </div>
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
             <el-form-item label="输入搜索：">
-              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="关键词"></el-input>
+              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
 <!--            <el-form-item label="书籍编号：">-->
 <!--              <el-input style="width: 203px" v-model="searchParams.id" placeholder="书籍编号"></el-input>-->
 <!--            </el-form-item>-->
-<!--            <el-form-item label="书籍出版商：">-->
+<!--            <el-form-item label="Publisher">-->
 <!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="书籍出版商"></el-input>-->
 <!--            </el-form-item>-->
 <!--            <el-form-item label="书籍分类：">-->
@@ -381,7 +381,7 @@ export default {
     //   this.request.post("/book/user/lend", JSON.stringify(ids)).then(res => {
     //     if (res.code == 200) {
     //       this.$message({
-    //         message: '借书成功',
+    //         message: 'Borrow successfully',
     //         type: 'success'
     //       });
     //     } else {
