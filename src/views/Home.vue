@@ -11,7 +11,7 @@
       </el-col>
       <el-col :span="6">
         <el-card style="color: #F56C6C">
-          <div><i class="el-icon-money" /> 借阅总数</div>
+          <div><i class="el-icon-money" /> Total lend</div>
           <div style="padding: 10px 0; text-align: center; font-weight: bold">
             2390
           </div>
