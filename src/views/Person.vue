@@ -244,7 +244,7 @@ export default {
         this.request.post("/member/user/change", this.form).then(res =>{
           if(res.code == 200) {
             this.$message({
-              message: '修改成功',
+              message: 'update successfully',
               type: 'success'
             })
             // 成功就重新设置
@@ -275,7 +275,7 @@ export default {
         if (res == 200) {
           this.$message({
             type: 'success',
-            message: "密码修改成功"
+            message: "password update successfully"
           })
           this.changeDialogFormVisible()
         } else {
@@ -316,7 +316,7 @@ export default {
       //     this.changeMessage()
       //     this.$message({
       //       type: 'success',
-      //       message: '修改成功!'
+      //       message: 'update successfully!'
       //     });
       //   }).catch(() => {
       //     this.$message({

@@ -256,7 +256,7 @@ export default {
       this.request.post("/member/menu/update", row).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
         } else {
@@ -281,7 +281,7 @@ export default {
         this.request.post("/member/menu/change", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '修改成功',
+              message: 'update successfully',
               type: 'success'
             });
             this.getmenuDetail()
