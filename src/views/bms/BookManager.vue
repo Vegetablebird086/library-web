@@ -41,7 +41,7 @@
               >
               </el-cascader>
             </el-form-item>
-            <el-form-item label="上架状态：">
+            <el-form-item label="Listing Status：">
               <el-select v-model="searchParams.status" placeholder="全部" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
@@ -58,13 +58,13 @@
                 @click="handleSaveBatch()"
                 type="primary"
                 size="small">
-              批量上架
+              Batch Shelves
             </el-button>
             <el-button
                 style="float: right;margin-right: 15px"
                 @click="handleDeleteBatch()"
                 size="small">
-              批量下架
+              Batch off the Shelves
             </el-button>
           </div>
         </div>
@@ -102,7 +102,7 @@
         </el-table-column>
         <el-table-column
             prop="category"
-            label="分类">
+            label="Categorisation">
         </el-table-column>
         <el-table-column
             prop="publisher"
@@ -110,11 +110,11 @@
         </el-table-column>
         <el-table-column
             prop="stock"
-            label="库存">
+            label="Stock">
         </el-table-column>
         <el-table-column
             prop="status"
-            label="状态">
+            label="State">
         </el-table-column>
         <!--        Operation-->
         <el-table-column
@@ -122,9 +122,9 @@
             label="Operation"
             width="180">
           <template slot-scope="scope">
-            <el-button v-if="scope.row.status == 0" @click="handleSave(scope.row)" type="primary" size="small">上架</el-button>
-            <el-button v-else @click="handleDelete(scope.row)" type="primary" size="small">下架</el-button>
-            <el-button @click="changeDialogFormVisible(scope.row)" type="success" size="small">改变库存</el-button>
+            <el-button v-if="scope.row.status == 0" @click="handleSave(scope.row)" type="primary" size="small">Shelve</el-button>
+            <el-button v-else @click="handleDelete(scope.row)" type="primary" size="small">Take down</el-button>
+            <el-button @click="changeDialogFormVisible(scope.row)" type="success" size="small">Changing Stockpiles</el-button>
           </template>
         </el-table-column>
 
@@ -177,10 +177,10 @@ export default {
       dialogFormVisible: false,
       publishStatusOptions: [{
         value: 1,
-        label: '上架'
+        label: 'Shelve'
       }, {
         value: 0,
-        label: '下架'
+        label: 'Take down'
       }],
 
       // 表格数据
@@ -233,7 +233,7 @@ export default {
       this.multipleSelection = val;
     },
     // 表格操作
-    // 上架
+    // Shelve
     handleSave(row) {
       console.log([row.id])
       console.log(JSON.stringify(row.id))
@@ -252,7 +252,7 @@ export default {
         }
       })
     },
-    // 下架
+    // Take down
     handleDelete(row) {
       console.log([row.id])
       this.requestBook.post("/book/admin/delete", [row.id]).then(res => {
@@ -299,7 +299,7 @@ export default {
       this.requestBook.post("/book/admin/delete", ids).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '下架成功',
+            message: 'Successfully Removed from the Shelves',
             type: 'success'
           });
           this.getBookDetail()

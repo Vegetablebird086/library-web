@@ -176,10 +176,10 @@ export default {
       bookCateOptions: [],
       publishStatusOptions: [{
         value: 1,
-        label: '上架'
+        label: 'Shelve'
       }, {
         value: 0,
-        label: '下架'
+        label: 'Take down'
       }],
 
       // 表格数据
