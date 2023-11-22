@@ -158,10 +158,10 @@ export default {
       bookCateOptions: [],
       // publishStatusOptions: [{
       //   value: 1,
-      //   label: 'Shelve'
+      //   label: 'on'
       // }, {
       //   value: 0,
-      //   label: 'Take down'
+      //   label: 'off'
       // }],
 
       // 表格数据

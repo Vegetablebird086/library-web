@@ -41,8 +41,8 @@
               >
               </el-cascader>
             </el-form-item>
-            <!--            <el-form-item label="Listing Status：">-->
-            <!--              <el-select v-model="searchParams.status" placeholder="全部" clearable>-->
+            <!--            <el-form-item label="updatestatue：">-->
+            <!--              <el-select v-model="searchParams.status" placeholder="all" clearable>-->
             <!--                <el-option-->
             <!--                    v-for="item in publishStatusOptions"-->
             <!--                    :key="item.value"-->
@@ -58,7 +58,7 @@
                 @click="handleDeleteCollectionBatch()"
                 type="primary"
                 size="small">
-              批量删除
+              delete by choosing
             </el-button>
           </div>
         </div>
@@ -103,7 +103,6 @@
         <el-table-column
             prop="describe"
             label="Describe">
-        </el-table-column>
         <!--        Operation-->
         <el-table-column
             fixed="right"
@@ -152,10 +151,10 @@ export default {
       bookCateOptions: [],
       // publishStatusOptions: [{
       //   value: 1,
-      //   label: 'Shelve'
+      //   label: '上架'
       // }, {
       //   value: 0,
-      //   label: 'Take down'
+      //   label: '下架'
       // }],
 
       // 表格数据

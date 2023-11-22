@@ -41,8 +41,8 @@
               >
               </el-cascader>
             </el-form-item>
-            <el-form-item label="Listing Status：">
-              <el-select v-model="searchParams.status" placeholder="全部" clearable>
+            <el-form-item label="updatestatue：">
+              <el-select v-model="searchParams.status" placeholder="all" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -118,10 +118,11 @@
         </el-table-column>
         <!--        Operation-->
         <el-table-column
-            fixed="right"
+            fixed="right
             label="Operation"
             width="180">
           <template slot-scope="scope">
+
             <el-button v-if="scope.row.status == 0" @click="handleSave(scope.row)" type="primary" size="small">Shelve</el-button>
             <el-button v-else @click="handleDelete(scope.row)" type="primary" size="small">Take down</el-button>
             <el-button @click="changeDialogFormVisible(scope.row)" type="success" size="small">Changing Stockpiles</el-button>
@@ -233,7 +234,7 @@ export default {
       this.multipleSelection = val;
     },
     // 表格操作
-    // Shelve
+    // 上架
     handleSave(row) {
       console.log([row.id])
       console.log(JSON.stringify(row.id))
@@ -252,7 +253,7 @@ export default {
         }
       })
     },
-    // Take down
+    // 下架
     handleDelete(row) {
       console.log([row.id])
       this.requestBook.post("/book/admin/delete", [row.id]).then(res => {

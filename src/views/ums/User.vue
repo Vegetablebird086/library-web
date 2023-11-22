@@ -28,14 +28,14 @@
              
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="user name"></el-input>
             </el-form-item>
-            <el-form-item label="用户编号：">
-              <el-input style="width: 203px" v-model="searchParams.id" placeholder="用户编号"></el-input>
+            <el-form-item label="IDnumber：">
+              <el-input style="width: 203px" v-model="searchParams.id" placeholder="IDnumber"></el-input>
             </el-form-item>
-<!--            <el-form-item label="用户状态：">-->
-<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="用户状态"></el-input>-->
+<!--            <el-form-item label="Status：">-->
+<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Status"></el-input>-->
 <!--            </el-form-item>-->
-            <el-form-item label="用户状态：">
-              <el-select v-model="searchParams.status" placeholder="全部" clearable>
+            <el-form-item label="Status：">
+              <el-select v-model="searchParams.status" placeholder="all" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -44,7 +44,7 @@
                 </el-option>
               </el-select>
             </el-form-item>
-            <el-form-item label="专业分类：">
+            <el-form-item label="Major：">
               <el-cascader
                   clearable
                   v-model="selectCategoryValue"
@@ -53,8 +53,8 @@
               >
               </el-cascader>
             </el-form-item>
-            <!--            <el-form-item label="Listing Status：">-->
-            <!--              <el-select v-model="searchParams.status" placeholder="全部" clearable>-->
+            <!--            <el-form-item label="updatestatue：">-->
+            <!--              <el-select v-model="searchParams.status" placeholder="all" clearable>-->
             <!--                <el-option-->
             <!--                    v-for="item in publishStatusOptions"-->
             <!--                    :key="item.value"-->
@@ -70,13 +70,13 @@
                 @click="handleDeleteUserBatch()"
                 type="primary"
                 size="small">
-              批量删除
+              delete by choosing
             </el-button>
 <!--            <el-button-->
 <!--                style="float: right;margin-right: 15px"-->
 <!--                @click="handleReturnBookBatch()"-->
 <!--                size="small">-->
-<!--              批量删除-->
+<!--              delete by choosing-->
 <!--            </el-button>-->
           </div>
         </div>
@@ -126,7 +126,7 @@
         </el-table-column>
         <el-table-column
             prop="telephone"
-            label="电话号"
+            label="phone"
             width="150">
         </el-table-column>
         <el-table-column
@@ -136,7 +136,7 @@
         </el-table-column>
         <el-table-column
             align="center"
-            label="是否启用"
+            label="usingornot"
             v-slot="scope"
         >
           <el-switch

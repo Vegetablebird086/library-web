@@ -64,7 +64,7 @@
             <!--                style="float: right;margin-right: 15px"-->
             <!--                @click="handleReturnBookBatch()"-->
             <!--                size="small">-->
-            <!--              批量删除-->
+            <!--              delete by choosing-->
             <!--            </el-button>-->
           </div>
         </div>
@@ -89,23 +89,19 @@
         </el-table-column>
         <el-table-column
             prop="id"
-
             label="ID">
         </el-table-column>
         <el-table-column
             prop="menuName"
-
             label="Menu"
         >
         </el-table-column>
         <el-table-column
             prop="grade"
-
             label="Menu Grade">
         </el-table-column>
         <el-table-column
             align="center"
-
             label="Enable or not"
             v-slot="scope"
         >
@@ -119,7 +115,6 @@
         </el-table-column>
         <el-table-column
             v-slot="scope"
-
             label="Setting"
             >
           <template >
@@ -128,14 +123,13 @@
 <!--            <el-button @click="changeToParent(scope.row)" type="primary" size="small">父菜单</el-button>-->
           </template>
         </el-table-column>
-        <!--        操作-->
+        <!--        operation-->
         <el-table-column
             fixed="right"
 
             label="Operation"
             width="150">
           <template slot-scope="scope">
-
             <el-button @click="handleChangemenu(scope.row)" type="primary" size="small">Modify</el-button>
             <el-button @click="handleDeletemenu(scope.row)" type="success" size="small">Delete</el-button>
           </template>
@@ -196,11 +190,9 @@ export default {
       bookCateOptions: [],
       publishStatusOptions: [{
         value: 1,
-
         label: 'Deactivate'
       }, {
         value: 0,
-
         label: 'Activate'
       }],
 
@@ -267,7 +259,6 @@ export default {
       this.request.post("/member/menu/update", row).then(res => {
         if (res.code == 200) {
           this.$message({
-
             message: 'Modified Successfully',
             type: 'success'
           });
@@ -285,7 +276,6 @@ export default {
     // 修改用户信息
     handleChangemenu(row) {
       console.log([row.id])
-
       this.$confirm('This operation will permanently delete personal information. Do you want to continue?', 'Tip', {
         confirmButtonText: 'Yes',
         cancelButtonText: 'No',
@@ -294,7 +284,6 @@ export default {
         this.request.post("/member/menu/change", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-
               message: 'Modified Successfully',
               type: 'success'
             });
@@ -309,7 +298,6 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-
           message: 'Modification Cancelled'
         });
       });
@@ -318,7 +306,6 @@ export default {
     // 删除
     handleDeletemenu(row) {
       console.log([row.id])
-
       this.$confirm('This operation will permanently delete personal information. Do you want to continue?', 'Tip', {
         confirmButtonText: 'Yes',
         cancelButtonText: 'No',
@@ -327,7 +314,6 @@ export default {
         this.request.post("/member/menu/delete", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-
               message: 'Delete Successfully',
               type: 'success'
             });
@@ -342,7 +328,6 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-
           message: 'Modification Cancelled'
         });
       });
@@ -368,13 +353,12 @@ export default {
     //     }
     //   })
     // },
-    // 批量删除
+    // delete by choosing
     handleDeletemenuBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id
       })
       console.log(ids)
-
 
       this.$confirm('This operation will permanently delete personal information. Do you want to continue?', 'Tip', {
         confirmButtonText: 'Yes',
@@ -399,7 +383,6 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-
           message: 'Modification Cancelled'
         });
       });

@@ -26,6 +26,7 @@
             <el-form-item label="Enter Search：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
+
 <!--            <el-form-item label="Book Number：">-->
 <!--              <el-input style="width: 203px" v-model="searchParams.id" placeholder="Book Number"></el-input>-->
 <!--            </el-form-item>-->
@@ -42,7 +43,7 @@
 <!--              </el-cascader>-->
 <!--            </el-form-item>-->
             <el-form-item label="状态：">
-              <el-select v-model="searchParams.status" placeholder="全部" clearable>
+              <el-select v-model="searchParams.status" placeholder="all" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -57,8 +58,8 @@
                 style="float: right"
                 @click="handleDeleteuserdepartmentBatch()"
                 type="primary"
-                size="small">
-              批量删除
+                size="small">              批量删除
+              delete by choosing
             </el-button>
           </div>
         </div>
@@ -94,7 +95,7 @@
         </el-table-column>
         <el-table-column
           align="center"
-          label="是否启用"
+          label="usingornot"
           v-slot="scope"
       >
         <el-switch
@@ -106,7 +107,7 @@
         </el-switch>
       </el-table-column>
         <el-table-column
-            label="专业列表"
+            label="majorlist"
             v-slot="scope"
         >
           <router-link :to="{path: '/ums/second/major', query: {departmentId: scope.row.id}}">分配专业</router-link>
