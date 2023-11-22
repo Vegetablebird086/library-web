@@ -103,6 +103,7 @@
         <el-table-column
             prop="describe"
             label="Describe">
+        </el-table-column>
         <!--        Operation-->
         <el-table-column
             fixed="right"
