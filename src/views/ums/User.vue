@@ -23,8 +23,10 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="输入搜索：">
-              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="用户名"></el-input>
+           
+            <el-form-item label="Enter Search：">
+             
+              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="user name"></el-input>
             </el-form-item>
             <el-form-item label="用户编号：">
               <el-input style="width: 203px" v-model="searchParams.id" placeholder="用户编号"></el-input>
@@ -99,28 +101,28 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="编号">
+            label="Number">
         </el-table-column>
         <el-table-column
             prop="username"
-            label="名称"
+            label="Name"
             >
         </el-table-column>
         <el-table-column
             prop="department"
-            label="学院">
+            label="college">
         </el-table-column>
         <el-table-column
             prop="major"
-            label="专业">
+            label="major">
         </el-table-column>
         <el-table-column
             prop="classNumber"
-            label="班级">
+            label="class">
         </el-table-column>
         <el-table-column
             prop="sex"
-            label="性别">
+            label="gender">
         </el-table-column>
         <el-table-column
             prop="telephone"
@@ -129,7 +131,7 @@
         </el-table-column>
         <el-table-column
             prop="remain"
-            label="可借书籍"
+            label="Books available for loan"
             >
         </el-table-column>
         <el-table-column
@@ -145,10 +147,10 @@
           >
           </el-switch>
         </el-table-column>
-        <!--        操作-->
+        <!--        Operation-->
         <el-table-column
             fixed="right"
-            label="操作"
+            label="Operation"
             width="150">
           <template slot-scope="scope">
             <el-button @click="handleChangeUser(scope.row)" type="primary" size="small">修改</el-button>
@@ -163,7 +165,7 @@
 <!--        <el-form label-width="80px" size="small" >-->
 <!--          <el-form-item label="库存编号">-->
 <!--            <template>-->
-<!--              <el-select v-model="role" placeholder="请选择">-->
+<!--              <el-select v-model="role" placeholder="please select">-->
 <!--                <el-option-->
 <!--                    no-data-text="选择角色"-->
 <!--                    multiple="true"-->
@@ -192,7 +194,7 @@
         <el-form label-width="80px" size="small" >
           <el-form-item label="库存编号">
             <template>
-              <el-select v-model="role" placeholder="请选择"
+              <el-select v-model="role" placeholder="please select"
                    multiple
                    filterable
                    allow-create
@@ -320,7 +322,7 @@ export default {
       this.request.post("/member/user/update", row).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
         } else {
@@ -352,7 +354,7 @@ export default {
         this.request.post("/member/user/change", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '修改成功',
+              message: 'update successfully',
               type: 'success'
             });
             this.getUserDetail()

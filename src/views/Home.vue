@@ -19,7 +19,7 @@
       </el-col>
       <el-col :span="6">
         <el-card style="color: #67C23A">
-          <div><i class="el-icon-bank-card" /> 日借阅</div>
+          <div><i class="el-icon-bank-card" /> Daily loan</div>
           <div style="padding: 10px 0; text-align: center; font-weight: bold">
              28
           </div>
@@ -27,7 +27,7 @@
       </el-col>
       <el-col :span="6">
         <el-card style="color: #E6A23C">
-          <div><i class="el-icon-s-shop" /> 月借阅</div>
+          <div><i class="el-icon-s-shop" /> Monthly loan</div>
           <div style="padding: 10px 0; text-align: center; font-weight: bold">
             693
           </div>
@@ -62,8 +62,8 @@ export default {
   mounted() {  // 页面元素渲染之后再触发
     var option = {
       title: {
-        text: '各quarter会员数量统计',
-        subtext: '趋势图',
+        text: 'Number of members by quarter',
+        subtext: 'tendency chart',
         left: 'center'
       },
       tooltip: {
@@ -82,7 +82,7 @@ export default {
       },
       series: [
         {
-          name: "书籍借阅",
+          name: "Book lending",
           data: [10,22,35,32,26],
           type: 'bar'
         },
@@ -108,8 +108,8 @@ export default {
 
     var pieOption = {
       title: {
-        text: '各quarter会员数量统计',
-        subtext: '比例图',
+        text: 'Number of members by quarter',
+        subtext: 'proportion chart',
         left: 'center'
       },
       tooltip: {

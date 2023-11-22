@@ -23,14 +23,14 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="输入搜索：">
+            <el-form-item label="Enter Search：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
-            <el-form-item label="书籍编号：">
-              <el-input style="width: 203px" v-model="searchParams.id" placeholder="书籍编号"></el-input>
+            <el-form-item label="Book Number：">
+              <el-input style="width: 203px" v-model="searchParams.id" placeholder="Book Number"></el-input>
             </el-form-item>
             <el-form-item label="Publisher">
-              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="书籍出版商"></el-input>
+              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Book Publisher"></el-input>
             </el-form-item>
             <el-form-item label="Book Category：">
               <el-cascader
@@ -87,11 +87,11 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="编号">
+            label="Number">
         </el-table-column>
         <el-table-column
             prop="bookId"
-            label="书籍编号">
+            label="Book Number">
         </el-table-column>
           <el-table-column
               prop="userId"
@@ -121,10 +121,10 @@
           >
           </el-switch>
         </el-table-column>
-        <!--        操作-->
+        <!--        Operation-->
         <el-table-column
             fixed="right"
-            label="操作"
+            label="Operation"
             width="200">
           <template slot-scope="scope">
             <el-button @click="handleChangeStatus(scope.row)" type="primary" size="small">修改状态</el-button>
@@ -246,7 +246,7 @@ export default {
       this.requestBook.post("/library/booklendinfo/update", row).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
         } else {
@@ -270,7 +270,7 @@ export default {
         this.requestBook.get(`/library/booklendinfo/change?id=${row.id}&status=${row.status}`).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '修改成功',
+              message: 'update successfully',
               type: 'success'
             });
             this.getUserDetail()
