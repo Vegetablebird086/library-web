@@ -41,8 +41,8 @@
 <!--              >-->
 <!--              </el-cascader>-->
 <!--            </el-form-item>-->
-            <!--            <el-form-item label="Listing Status：">-->
-            <!--              <el-select v-model="searchParams.status" placeholder="全部" clearable>-->
+            <!--            <el-form-item label="updatestatue：">-->
+            <!--              <el-select v-model="searchParams.status" placeholder="all" clearable>-->
             <!--                <el-option-->
             <!--                    v-for="item in publishStatusOptions"-->
             <!--                    :key="item.value"-->
@@ -58,7 +58,7 @@
                 @click="handleDeletepermissionBatch()"
                 type="primary"
                 size="small">
-              批量删除
+              delete by choosing
             </el-button>
             <el-button
                 style="float: right;margin-right: 15px"
@@ -107,7 +107,7 @@
 
         <el-table-column
             align="center"
-            label="是否启用"
+            label="usingornot"
             v-slot="scope"
             prop="status"
         >
@@ -120,7 +120,7 @@
           </el-switch>
         </el-table-column>
 
-        <!--        操作-->
+        <!--        operation-->
         <el-table-column
             fixed="right"
             label="Operation"

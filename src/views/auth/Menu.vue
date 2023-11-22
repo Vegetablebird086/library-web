@@ -23,16 +23,16 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="Enter Search：">
-              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="菜单名"></el-input>
+            <el-form-item label="Enter search:">
+              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Menu Name"></el-input>
             </el-form-item>
-            <el-form-item label="Menus Number：">
-              <el-input style="width: 203px" v-model="searchParams.id" placeholder="菜单Number"></el-input>
+            <el-form-item label="Menu Number:">
+              <el-input style="width: 203px" v-model="searchParams.id" placeholder="Menu Number"></el-input>
             </el-form-item>
 <!--            <el-form-item label="Publisher">-->
-<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Book Publisher"></el-input>-->
+<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="书籍出版商"></el-input>-->
 <!--            </el-form-item>-->
-<!--            <el-form-item label="Book Categorie：">-->
+<!--            <el-form-item label="书籍分类：">-->
 <!--              <el-cascader-->
 <!--                  clearable-->
 <!--                  v-model="selectCategoryValue"-->
@@ -41,8 +41,8 @@
 <!--              >-->
 <!--              </el-cascader>-->
 <!--            </el-form-item>-->
-            <el-form-item label="Listing Status：">
-              <el-select v-model="searchParams.status" placeholder="全部" clearable>
+            <el-form-item label="Listing status:">
+              <el-select v-model="searchParams.status" placeholder="Total" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -58,13 +58,13 @@
                 @click="handleDeletemenuBatch()"
                 type="primary"
                 size="small">
-              批量删除
+              Batch Delete
             </el-button>
             <!--            <el-button-->
             <!--                style="float: right;margin-right: 15px"-->
             <!--                @click="handleReturnBookBatch()"-->
             <!--                size="small">-->
-            <!--              批量删除-->
+            <!--              delete by choosing-->
             <!--            </el-button>-->
           </div>
         </div>
@@ -89,20 +89,20 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="Number">
+            label="ID">
         </el-table-column>
         <el-table-column
             prop="menuName"
-            label="菜单"
+            label="Menu"
         >
         </el-table-column>
         <el-table-column
             prop="grade"
-            label="菜单级数">
+            label="Menu Grade">
         </el-table-column>
         <el-table-column
             align="center"
-            label="是否启用"
+            label="Enable or not"
             v-slot="scope"
         >
           <el-switch
@@ -115,21 +115,23 @@
         </el-table-column>
         <el-table-column
             v-slot="scope"
-            label="设置"
+            label="Setting"
             >
           <template >
-            <el-button @click="changeParentId(scope.row)" type="primary" size="small">子菜单</el-button>
+
+            <el-button @click="changeParentId(scope.row)" type="primary" size="small">Submenu</el-button>
 <!--            <el-button @click="changeToParent(scope.row)" type="primary" size="small">父菜单</el-button>-->
           </template>
         </el-table-column>
-        <!--        操作-->
+        <!--        operation-->
         <el-table-column
             fixed="right"
-            label="操作"
+
+            label="Operation"
             width="150">
           <template slot-scope="scope">
-            <el-button @click="handleChangemenu(scope.row)" type="primary" size="small">修改</el-button>
-            <el-button @click="handleDeletemenu(scope.row)" type="success" size="small">删除</el-button>
+            <el-button @click="handleChangemenu(scope.row)" type="primary" size="small">Modify</el-button>
+            <el-button @click="handleDeletemenu(scope.row)" type="success" size="small">Delete</el-button>
           </template>
         </el-table-column>
 
@@ -188,10 +190,10 @@ export default {
       bookCateOptions: [],
       publishStatusOptions: [{
         value: 1,
-        label: '停用'
+        label: 'Deactivate'
       }, {
         value: 0,
-        label: '启用'
+        label: 'Activate'
       }],
 
       // 表格数据
@@ -241,12 +243,13 @@ export default {
     handleSizeChange(val) {
       this.params.pageSize=val
       this.getmenuDetail()
-      console.log(`每页 ${val} 条`);
+      console.log(`${val}items per page`);
     },
     handleCurrentChange(val) {
       this.params.currPage=val
       this.getmenuDetail()
-      console.log(`当前页: ${val}`);
+
+      console.log(`current page:${val}`);
     },
     // 表格多选框
     handleSelectionChange(val) {
@@ -256,7 +259,7 @@ export default {
       this.request.post("/member/menu/update", row).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: 'update successfully',
+            message: 'Modified Successfully',
             type: 'success'
           });
         } else {
@@ -273,15 +276,15 @@ export default {
     // 修改用户信息
     handleChangemenu(row) {
       console.log([row.id])
-      this.$confirm('此操作将永久修改个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation will permanently delete personal information. Do you want to continue?', 'Tip', {
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/menu/change", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: 'update successfully',
+              message: 'Modified Successfully',
               type: 'success'
             });
             this.getmenuDetail()
@@ -295,7 +298,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Modification Cancelled'
         });
       });
 
@@ -303,15 +306,15 @@ export default {
     // 删除
     handleDeletemenu(row) {
       console.log([row.id])
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation will permanently delete personal information. Do you want to continue?', 'Tip', {
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/menu/delete", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+              message: 'Delete Successfully',
               type: 'success'
             });
             this.getmenuDetail()
@@ -325,7 +328,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Modification Cancelled'
         });
       });
 
@@ -350,21 +353,23 @@ export default {
     //     }
     //   })
     // },
-    // 批量删除
+    // delete by choosing
     handleDeletemenuBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id
       })
       console.log(ids)
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+
+      this.$confirm('This operation will permanently delete personal information. Do you want to continue?', 'Tip', {
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/menu/delete", ids).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+
+              message: 'Delete Successfully',
               type: 'success'
             });
             this.getmenuDetail()
@@ -378,7 +383,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Modification Cancelled'
         });
       });
     },

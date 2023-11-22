@@ -42,12 +42,12 @@
       </el-submenu>
       <el-submenu index="4">
         <template slot="title"><i class="el-icon-unlock"></i>
-          <span slot="title">权限</span>
+          <span slot="title">Permission</span>
         </template>
         <!--          // 子标题-->
-        <el-menu-item index="/sms/role">角色列表</el-menu-item>
-        <el-menu-item index="/sms/menu">菜单列表</el-menu-item>
-        <el-menu-item index="/sms/permission">权限列表</el-menu-item>
+        <el-menu-item index="/sms/role">Role List</el-menu-item>
+        <el-menu-item index="/sms/menu">Menu List</el-menu-item>
+        <el-menu-item index="/sms/permission">Permission List</el-menu-item>
       </el-submenu>
     </div>
     <!--    <div v-for="item in menus" :key="item.id">

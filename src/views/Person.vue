@@ -13,7 +13,7 @@
       </el-upload>
 
 
-      <el-form-item label="user name" prop="username">
+      <el-form-item label="username" prop="username">
         <el-input v-model="form.username" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="college">

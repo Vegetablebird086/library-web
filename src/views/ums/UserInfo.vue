@@ -41,8 +41,8 @@
 <!--              >-->
 <!--              </el-cascader>-->
 <!--            </el-form-item>-->
-            <el-form-item label="Listing Status：">
-              <el-select v-model="searchParams.status" placeholder="全部" clearable>
+            <el-form-item label="updatestatue：">
+              <el-select v-model="searchParams.status" placeholder="all" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -58,7 +58,7 @@
                 @click="handleDeleteuserdepartmentBatch()"
                 type="primary"
                 size="small">
-              批量删除
+              delete by choosing
             </el-button>
           </div>
         </div>
@@ -94,7 +94,7 @@
         </el-table-column>
         <el-table-column
           align="center"
-          label="是否启用"
+          label="usingornot"
           v-slot="scope"
       >
         <el-switch
@@ -106,7 +106,7 @@
         </el-switch>
       </el-table-column>
         <el-table-column
-            label="专业列表"
+            label="majorlist"
             v-slot="scope"
         >
           <router-link :to="{path: '/ums/second/major', query: {departmentId: scope.row.id}}"

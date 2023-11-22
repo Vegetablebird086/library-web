@@ -41,8 +41,8 @@
               >
               </el-cascader>
             </el-form-item>
-            <!--            <el-form-item label="Listing Status：">-->
-            <!--              <el-select v-model="searchParams.status" placeholder="全部" clearable>-->
+            <!--            <el-form-item label="updatestatue：">-->
+            <!--              <el-select v-model="searchParams.status" placeholder="all" clearable>-->
             <!--                <el-option-->
             <!--                    v-for="item in publishStatusOptions"-->
             <!--                    :key="item.value"-->
@@ -58,13 +58,13 @@
                 @click="handleDeleteUserBatch()"
                 type="primary"
                 size="small">
-              批量删除
+              delete by choosing
             </el-button>
             <!--            <el-button-->
             <!--                style="float: right;margin-right: 15px"-->
             <!--                @click="handleReturnBookBatch()"-->
             <!--                size="small">-->
-            <!--              批量删除-->
+            <!--              delete by choosing-->
             <!--            </el-button>-->
           </div>
         </div>
@@ -91,26 +91,27 @@
         </el-table-column>
         <el-table-column
             prop="bookId"
+
             label="Book Number">
         </el-table-column>
           <el-table-column
               prop="userId"
-              label="借书人编号">
+              label="lendID">
         </el-table-column>
         <el-table-column
             prop="lendTime"
-            label="借出时间"
+            label="lendtime"
             width="170"
         >
         </el-table-column>
         <el-table-column
             prop="returnTime"
-            label="还书时间"
+            label="returntime"
             width="170">
         </el-table-column>
         <el-table-column
             align="center"
-            label="是否启用"
+            label="usingornot"
             v-slot="scope"
         >
           <el-switch
@@ -189,10 +190,10 @@ export default {
       bookCateOptions: [],
       // publishStatusOptions: [{
       //   value: 1,
-      //   label: 'Shelve'
+      //   label: '上架'
       // }, {
       //   value: 0,
-      //   label: 'Take down'
+      //   label: '下架'
       // }],
 
       // 表格数据

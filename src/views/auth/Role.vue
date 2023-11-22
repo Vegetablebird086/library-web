@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <!--    搜索框-->
@@ -42,7 +43,7 @@
 <!--              </el-cascader>-->
 <!--            </el-form-item>-->
             <el-form-item label="状态：">
-              <el-select v-model="searchParams.status" placeholder="全部" clearable>
+              <el-select v-model="searchParams.status" placeholder="all" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -58,7 +59,7 @@
                 @click="handleDeleteroleBatch()"
                 type="primary"
                 size="small">
-              批量删除
+              delete by choosing
             </el-button>
             <el-button
                 style="float: right;margin-right: 15px"
@@ -114,7 +115,7 @@
         </el-table-column>
         <el-table-column
             align="center"
-            label="是否启用"
+            label="usingornot"
             v-slot="scope"
         >
           <el-switch
@@ -349,7 +350,7 @@ export default {
         }
       })
     },
-    // 批量删除
+    // delete by choosing
     handleDeleteroleBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id
