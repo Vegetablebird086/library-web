@@ -260,7 +260,7 @@ export default {
       this.request.post("/member/role/update", row).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
         } else {
@@ -282,7 +282,7 @@ export default {
       this.request.post("/member/role/update", this.role).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
           this.changeDialogFormVisible()

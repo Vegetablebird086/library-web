@@ -86,7 +86,7 @@
         </el-table-column>
         <el-table-column
             prop="department"
-            label="学院">
+            label="college">
         </el-table-column>
         <el-table-column
             prop="describe"
@@ -251,7 +251,7 @@ export default {
       this.request.post("/member/userdepartment/update", row).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
         } else {
@@ -317,7 +317,7 @@ export default {
       this.request.post("/member/userdepartment/update", this.userdepartment).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
           this.changeDialogFormVisible()
