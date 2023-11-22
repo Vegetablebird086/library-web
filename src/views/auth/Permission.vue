@@ -23,7 +23,7 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="输入搜索：">
+            <el-form-item label="Enter Search:">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
 <!--            <el-form-item label="书籍编号：">-->
@@ -58,20 +58,20 @@
                 @click="handleDeletepermissionBatch()"
                 type="primary"
                 size="small">
-              批量删除
+              Batch Delete
             </el-button>
             <el-button
                 style="float: right;margin-right: 15px"
                 @click="handleChangepermissionBatch()"
                 size="small">
-              批量修改
+              Batch Modify
             </el-button>
             <el-button
                 style="float: right"
                 @click="changeDialogFormVisible"
                 type="primary"
                 size="small">
-              添加
+              Add
             </el-button>
           </div>
         </div>
@@ -96,18 +96,18 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="编号"
+            label="ID"
             width="50">
         </el-table-column>
         <el-table-column
             prop="permission"
-            label="权限"
+            label="Permission"
         >
         </el-table-column>
 
         <el-table-column
             align="center"
-            label="是否启用"
+            label="Enable or not"
             v-slot="scope"
             prop="status"
         >
@@ -123,7 +123,7 @@
         <!--        操作-->
         <el-table-column
             fixed="right"
-            label="操作"
+            label="Operation"
             width="150">
           <template slot-scope="scope">
             <el-button @click="handleChangepermission(scope.row)" type="primary" size="small">修改</el-button>
@@ -134,9 +134,9 @@
       </el-table>
 
       <!--添加角色信息      -->
-      <el-dialog title="添加权限" :visible.sync="dialogFormVisible" width="30%">
+      <el-dialog title="Add Permission" :visible.sync="dialogFormVisible" width="30%">
         <el-form label-width="80px" size="small" :data="permission">
-          <el-form-item label="权限">
+          <el-form-item label="Permission">
             <el-input v-model="permission.permission" autocomplete="off"></el-input>
           </el-form-item>
 <!--          <el-form-item label="角色名">-->
@@ -146,8 +146,8 @@
 <!--            <el-input v-model="permission.describe" autocomplete="off"></el-input>-->
 <!--          </el-form-item>-->
           <el-form-item>
-            <el-button type="primary" @click="handleAddpermissionOrChangepermission">确定</el-button>
-            <el-button type="primary" @click="changeDialogFormVisible">取消</el-button>
+            <el-button type="primary" @click="handleAddpermissionOrChangepermission">Yes</el-button>
+            <el-button type="primary" @click="changeDialogFormVisible">No</el-button>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -230,12 +230,12 @@ export default {
     handleSizeChange(val) {
       this.params.pageSize = val
       this.getpermissionDetail()
-      console.log(`每页 ${val} 条`);
+      console.log(`${val} items per page`);
     },
     handleCurrentChange(val) {
       this.params.currPage = val
       this.getpermissionDetail()
-      console.log(`当前页: ${val}`);
+      console.log(`current page: ${val}`);
     },
     // 表格多选框
     handleSelectionChange(val) {
@@ -246,7 +246,7 @@ export default {
       this.request.post("/member/permission/update", row).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'Modified Successfully',
             type: 'success'
           });
         } else {
@@ -267,7 +267,7 @@ export default {
       this.request.post("/member/permission/update", this.permission).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'Modified Successfully',
             type: 'success'
           });
           this.changeDialogFormVisible()
@@ -286,15 +286,15 @@ export default {
     // 删除
     handleDeletepermission(row) {
       console.log([row.id])
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation will permanently delete personal information. Do you want to continue?', 'Tip', {
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/permission/delete", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+              message: 'Delete Successfully',
               type: 'success'
             });
             this.getpermissionDetail()
@@ -308,7 +308,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Modification Cancelled'
         });
       });
 
@@ -340,15 +340,15 @@ export default {
         return item.id
       })
       console.log(ids)
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation will permanently delete personal information. Do you want to continue?', 'Tip', {
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/permission/delete", ids).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+              message: 'Deleted Successfully',
               type: 'success'
             });
             this.getpermissionDetail()
@@ -362,7 +362,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Modification Cancelled'
         });
       });
     },
@@ -375,9 +375,9 @@ export default {
     // 添加角色
     handleAddpermissionOrChangepermission() {
       console.log(this.permission)
-      this.$confirm('是否确定添加？', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('Are you sure to add?', 'Tip', {
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
         type: 'warning'
       }).then(() => {
         if (this.permission.id == null) {
@@ -388,7 +388,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Modification Cancelled'
         });
       })
     },
@@ -397,7 +397,7 @@ export default {
       this.request.post("/member/permission/save", this.permission).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '添加成功',
+            message: 'Add Successfully',
             type: 'success'
           });
           this.getpermissionDetail()

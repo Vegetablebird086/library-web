@@ -15,13 +15,13 @@
       </el-tree>
       <div>
         <template >
-          <el-button @click="changeMenu" type="primary" size="small">保存</el-button>
-          <el-button @click="refresh" type="success" size="small">清空</el-button>
+          <el-button @click="changeMenu" type="primary" size="small">Save</el-button>
+          <el-button @click="refresh" type="success" size="small">Empty</el-button>
           <el-button type="info" size="small">
           <router-link to="/sms/role"
                        style="text-decoration:none color:#ffffff"
           >
-            回退</router-link>
+            Back</router-link>
           </el-button>
         </template>
       </div>
