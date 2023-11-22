@@ -23,16 +23,16 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="输入搜索：">
+            <el-form-item label="Enter Search：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
-<!--            <el-form-item label="书籍编号：">-->
-<!--              <el-input style="width: 203px" v-model="searchParams.id" placeholder="书籍编号"></el-input>-->
+<!--            <el-form-item label="Book Number：">-->
+<!--              <el-input style="width: 203px" v-model="searchParams.id" placeholder="Book Number"></el-input>-->
 <!--            </el-form-item>-->
 <!--            <el-form-item label="Publisher">-->
-<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="书籍出版商"></el-input>-->
+<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Book Publisher"></el-input>-->
 <!--            </el-form-item>-->
-<!--            <el-form-item label="书籍分类：">-->
+<!--            <el-form-item label="Book Categorie：">-->
 <!--              <el-cascader-->
 <!--                  clearable-->
 <!--                  v-model="selectCategoryValue"-->
@@ -96,7 +96,7 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="编号"
+            label="Number"
             width="50">
         </el-table-column>
         <el-table-column
@@ -123,7 +123,7 @@
         <!--        操作-->
         <el-table-column
             fixed="right"
-            label="操作"
+            label="Operation"
             width="150">
           <template slot-scope="scope">
             <el-button @click="handleChangepermission(scope.row)" type="primary" size="small">修改</el-button>
@@ -142,7 +142,7 @@
 <!--          <el-form-item label="角色名">-->
 <!--            <el-input v-model="permission.permissionKey" autocomplete="off"></el-input>-->
 <!--          </el-form-item>-->
-<!--          <el-form-item label="描述">-->
+<!--          <el-form-item label="Describe">-->
 <!--            <el-input v-model="permission.describe" autocomplete="off"></el-input>-->
 <!--          </el-form-item>-->
           <el-form-item>

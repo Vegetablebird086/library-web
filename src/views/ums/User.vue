@@ -23,7 +23,7 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="输入搜索：">
+            <el-form-item label="Enter Search：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="用户名"></el-input>
             </el-form-item>
             <el-form-item label="用户编号：">
@@ -99,11 +99,11 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="编号">
+            label="Number">
         </el-table-column>
         <el-table-column
             prop="username"
-            label="名称"
+            label="Name"
             >
         </el-table-column>
         <el-table-column
@@ -145,10 +145,10 @@
           >
           </el-switch>
         </el-table-column>
-        <!--        操作-->
+        <!--        Operation-->
         <el-table-column
             fixed="right"
-            label="操作"
+            label="Operation"
             width="150">
           <template slot-scope="scope">
             <el-button @click="handleChangeUser(scope.row)" type="primary" size="small">修改</el-button>
