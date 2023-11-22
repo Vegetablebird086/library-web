@@ -187,10 +187,10 @@ export default {
       bookCateOptions: [],
       // publishStatusOptions: [{
       //   value: 1,
-      //   label: 'on'
+      //   label: 'Shelve'
       // }, {
       //   value: 0,
-      //   label: 'off'
+      //   label: 'Take down'
       // }],
 
       // 表格数据
@@ -334,7 +334,7 @@ export default {
         }
       })
     },
-    // delete by choosing
+    // 批量删除
     handleDeletepermissionBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id

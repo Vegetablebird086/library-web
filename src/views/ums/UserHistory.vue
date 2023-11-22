@@ -121,7 +121,7 @@
               @change="switchChangeStatus(scope.row)"
           >
           </el-switch>
-        </el-table-column>        <!--        操作-->
+        </el-table-column>
         <!--        Operation-->
         <el-table-column
             fixed="right"
@@ -190,10 +190,10 @@ export default {
       bookCateOptions: [],
       // publishStatusOptions: [{
       //   value: 1,
-      //   label: 'on'
+      //   label: '上架'
       // }, {
       //   value: 0,
-      //   label: 'off'
+      //   label: '下架'
       // }],
 
       // 表格数据
@@ -340,7 +340,7 @@ export default {
     //     }
     //   })
     // },
-    // delete by choosing
+    // 批量删除
     handleDeleteUserBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id

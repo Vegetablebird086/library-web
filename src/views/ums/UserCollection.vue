@@ -103,7 +103,6 @@
         <el-table-column
             prop="describe"
             label="Describe">
-        </el-table-column        <!--        操作-->
         <!--        Operation-->
         <el-table-column
             fixed="right"
@@ -152,10 +151,10 @@ export default {
       bookCateOptions: [],
       // publishStatusOptions: [{
       //   value: 1,
-      //   label: 'on'
+      //   label: '上架'
       // }, {
       //   value: 0,
-      //   label: 'off'
+      //   label: '下架'
       // }],
 
       // 表格数据

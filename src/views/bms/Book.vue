@@ -41,8 +41,8 @@
               >
               </el-cascader>
             </el-form-item>
-<!--            <el-form-item label="updatestatue：">-->
-<!--              <el-select v-model="searchParams.status" placeholder="all" clearable>-->
+<!--            <el-form-item label="Listing Status：">-->
+<!--              <el-select v-model="searchParams.status" placeholder="All" clearable>-->
 <!--                <el-option-->
 <!--                    v-for="item in publishStatusOptions"-->
 <!--                    :key="item.value"-->
@@ -274,7 +274,7 @@ export default {
       this.requestBook.post("/book/user/return", ids).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: 'Return successfully成功',
+            message: 'Return successfully',
             type: 'success'
           });
         } else {

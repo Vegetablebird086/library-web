@@ -77,7 +77,7 @@ const routes = [
           {
             path: 'user',
             name: 'User List',
-            meta: { title: '用户列表'},
+            meta: { title: 'user list'},
             component: () => (import("../views/ums/User"))
           },
           {
@@ -88,8 +88,8 @@ const routes = [
           },
           {
             path: 'second/major',
-            name: '专业列表',
-            meta: { title: '专业列表'},
+            name: 'majorlist',
+            meta: { title: 'majorlist'},
             component: () => (import("../views/ums/second/Major"))
           },
           {

@@ -198,11 +198,9 @@ export default {
       selectCategoryValue: {},
       bookCateOptions: [],
       // publishStatusOptions: [{
-      //   value: 1
-      //   label: 'on'
       // }, {
       //   value: 0,
-      //   label: 'off'
+      //   label: '下架'
       // }],
 
       // 表格数据
@@ -260,7 +258,7 @@ export default {
     switchChangeStatus(row) {
       this.request.post("/member/usermajor/update", row).then(res => {
         if (res.code == 200) {
-          this.$message
+          this.$message({
             message: 'update successfully',
             type: 'success'
           });
@@ -349,7 +347,7 @@ export default {
         }
       })
     },
-    // delete by choosing
+    // 批量删除
     handleDeleteusermajorBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id
