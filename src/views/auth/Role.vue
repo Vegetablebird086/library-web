@@ -23,16 +23,16 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="输入搜索：">
+            <el-form-item label="searchByInput：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="角色名"></el-input>
             </el-form-item>
             <el-form-item label="角色编号：">
               <el-input style="width: 203px" v-model="searchParams.id" placeholder="角色编号"></el-input>
             </el-form-item>
 <!--            <el-form-item label="Publisher">-->
-<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="书籍出版商"></el-input>-->
+<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Publisher"></el-input>-->
 <!--            </el-form-item>-->
-<!--            <el-form-item label="书籍分类：">-->
+<!--            <el-form-item label="classification：">-->
 <!--              <el-cascader-->
 <!--                  clearable-->
 <!--                  v-model="selectCategoryValue"-->
@@ -42,7 +42,7 @@
 <!--              </el-cascader>-->
 <!--            </el-form-item>-->
             <el-form-item label="状态：">
-              <el-select v-model="searchParams.status" placeholder="全部" clearable>
+              <el-select v-model="searchParams.status" placeholder="all" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -58,7 +58,7 @@
                 @click="handleDeleteroleBatch()"
                 type="primary"
                 size="small">
-              批量删除
+              delete by choosing
             </el-button>
             <el-button
                 style="float: right;margin-right: 15px"
@@ -96,7 +96,7 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="编号"
+            label="ID"
             width="50">
         </el-table-column>
         <el-table-column
@@ -110,11 +110,11 @@
         </el-table-column>
         <el-table-column
             prop="describe"
-            label="描述">
+            label="description">
         </el-table-column>
         <el-table-column
             align="center"
-            label="是否启用"
+            label="usingornot"
             v-slot="scope"
         >
           <el-switch
@@ -134,10 +134,10 @@
           >
             分配菜单</router-link>
         </el-table-column>
-        <!--        操作-->
+        <!--        operation-->
         <el-table-column
             fixed="right"
-            label="操作"
+            label="operation"
             width="150">
           <template slot-scope="scope">
             <el-button @click="handleChangerole(scope.row)" type="primary" size="small">修改</el-button>
@@ -156,7 +156,7 @@
           <el-form-item label="角色名">
             <el-input v-model="role.role" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="描述">
+          <el-form-item label="description">
             <el-input v-model="role.describe" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item>
@@ -349,7 +349,7 @@ export default {
         }
       })
     },
-    // 批量删除
+    // delete by choosing
     handleDeleteroleBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id

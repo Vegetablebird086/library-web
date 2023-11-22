@@ -13,10 +13,10 @@
       </el-upload>
 
 
-      <el-form-item label="用户名" prop="username">
+      <el-form-item label="username" prop="username">
         <el-input v-model="form.username" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="学院">
+      <el-form-item label="academy">
         <el-cascader
             clearable
             v-model="selectDepartmentValue"
@@ -25,7 +25,7 @@
         >
         </el-cascader>
       </el-form-item>
-      <el-form-item label="专业">
+      <el-form-item label="major">
         <el-cascader
             clearable
             v-model="selectMajorValue"
@@ -37,14 +37,14 @@
       <el-form-item label="班级">
         <el-input v-model="form.classNumber" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="性别">
+      <el-form-item label="sex">
 <!--        <el-radio v-model="1" label="1">男</el-radio>-->
 <!--        <el-radio v-model="0" label="0">女</el-radio>-->
       </el-form-item>
       <el-form-item label="电话" prop="telephone">
         <el-input v-model="form.telephone" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="可借书籍">
+      <el-form-item label="lendable">
         <el-input type="text" v-model="form.remain" autocomplete="off" :disabled="true"></el-input>
       </el-form-item>
       <el-form-item>

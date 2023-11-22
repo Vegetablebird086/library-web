@@ -23,14 +23,14 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="输入搜索：">
+            <el-form-item label="searchByInput：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
-            <el-form-item label="书籍编号：">
-              <el-input style="width: 203px" v-model="searchParams.id" placeholder="书籍编号"></el-input>
+            <el-form-item label="BookNumber：">
+              <el-input style="width: 203px" v-model="searchParams.id" placeholder="BookNumber"></el-input>
             </el-form-item>
             <el-form-item label="Publisher">
-              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="书籍出版商"></el-input>
+              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Publisher"></el-input>
             </el-form-item>
             <el-form-item label="Book Category：">
               <el-cascader
@@ -41,8 +41,8 @@
               >
               </el-cascader>
             </el-form-item>
-            <el-form-item label="上架状态：">
-              <el-select v-model="searchParams.status" placeholder="全部" clearable>
+            <el-form-item label="updatestatue：">
+              <el-select v-model="searchParams.status" placeholder="all" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -89,16 +89,16 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="编号"
+            label="ID"
             width="50">
         </el-table-column>
         <el-table-column
             prop="bookName"
-            label="名称">
+            label="name">
         </el-table-column>
         <el-table-column
             prop="writer"
-            label="作者">
+            label="writer">
         </el-table-column>
         <el-table-column
             prop="category"
@@ -106,7 +106,7 @@
         </el-table-column>
         <el-table-column
             prop="publisher"
-            label="出版商">
+            label="publisher">
         </el-table-column>
         <el-table-column
             prop="stock"
@@ -116,14 +116,14 @@
             prop="status"
             label="状态">
         </el-table-column>
-        <!--        操作-->
+        <!--        operation-->
         <el-table-column
             fixed="right"
-            label="操作"
+            label="operation"
             width="180">
           <template slot-scope="scope">
             <el-button v-if="scope.row.status == 0" @click="handleSave(scope.row)" type="primary" size="small">上架</el-button>
-            <el-button v-else @click="handleDelete(scope.row)" type="primary" size="small">下架</el-button>
+            <el-button v-else @click="handleDelete(scope.row)" type="primary" size="small">off</el-button>
             <el-button @click="changeDialogFormVisible(scope.row)" type="success" size="small">改变库存</el-button>
           </template>
         </el-table-column>
@@ -177,10 +177,10 @@ export default {
       dialogFormVisible: false,
       publishStatusOptions: [{
         value: 1,
-        label: '上架'
+        label: 'on'
       }, {
         value: 0,
-        label: '下架'
+        label: 'off'
       }],
 
       // 表格数据
@@ -233,7 +233,7 @@ export default {
       this.multipleSelection = val;
     },
     // 表格操作
-    // 上架
+    // on
     handleSave(row) {
       console.log([row.id])
       console.log(JSON.stringify(row.id))
@@ -252,7 +252,7 @@ export default {
         }
       })
     },
-    // 下架
+    // off
     handleDelete(row) {
       console.log([row.id])
       this.requestBook.post("/book/admin/delete", [row.id]).then(res => {

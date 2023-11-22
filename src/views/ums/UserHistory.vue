@@ -23,14 +23,14 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="输入搜索：">
+            <el-form-item label="searchByInput：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
-            <el-form-item label="书籍编号：">
-              <el-input style="width: 203px" v-model="searchParams.id" placeholder="书籍编号"></el-input>
+            <el-form-item label="BookNumber：">
+              <el-input style="width: 203px" v-model="searchParams.id" placeholder="BookNumber"></el-input>
             </el-form-item>
             <el-form-item label="Publisher">
-              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="书籍出版商"></el-input>
+              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Publisher"></el-input>
             </el-form-item>
             <el-form-item label="Book Category：">
               <el-cascader
@@ -41,8 +41,8 @@
               >
               </el-cascader>
             </el-form-item>
-            <!--            <el-form-item label="上架状态：">-->
-            <!--              <el-select v-model="searchParams.status" placeholder="全部" clearable>-->
+            <!--            <el-form-item label="updatestatue：">-->
+            <!--              <el-select v-model="searchParams.status" placeholder="all" clearable>-->
             <!--                <el-option-->
             <!--                    v-for="item in publishStatusOptions"-->
             <!--                    :key="item.value"-->
@@ -58,13 +58,13 @@
                 @click="handleDeleteUserBatch()"
                 type="primary"
                 size="small">
-              批量删除
+              delete by choosing
             </el-button>
             <!--            <el-button-->
             <!--                style="float: right;margin-right: 15px"-->
             <!--                @click="handleReturnBookBatch()"-->
             <!--                size="small">-->
-            <!--              批量删除-->
+            <!--              delete by choosing-->
             <!--            </el-button>-->
           </div>
         </div>
@@ -87,30 +87,30 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="编号">
+            label="ID">
         </el-table-column>
         <el-table-column
             prop="bookId"
-            label="书籍编号">
+            label="BookNumber">
         </el-table-column>
           <el-table-column
               prop="userId"
-              label="借书人编号">
+              label="lendID">
         </el-table-column>
         <el-table-column
             prop="lendTime"
-            label="借出时间"
+            label="lendtime"
             width="170"
         >
         </el-table-column>
         <el-table-column
             prop="returnTime"
-            label="还书时间"
+            label="returntime"
             width="170">
         </el-table-column>
         <el-table-column
             align="center"
-            label="是否启用"
+            label="usingornot"
             v-slot="scope"
         >
           <el-switch
@@ -121,10 +121,10 @@
           >
           </el-switch>
         </el-table-column>
-        <!--        操作-->
+        <!--        operation-->
         <el-table-column
             fixed="right"
-            label="操作"
+            label="operation"
             width="200">
           <template slot-scope="scope">
             <el-button @click="handleChangeStatus(scope.row)" type="primary" size="small">修改状态</el-button>
@@ -189,10 +189,10 @@ export default {
       bookCateOptions: [],
       // publishStatusOptions: [{
       //   value: 1,
-      //   label: '上架'
+      //   label: 'on'
       // }, {
       //   value: 0,
-      //   label: '下架'
+      //   label: 'off'
       // }],
 
       // 表格数据
@@ -339,7 +339,7 @@ export default {
     //     }
     //   })
     // },
-    // 批量删除
+    // delete by choosing
     handleDeleteUserBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id

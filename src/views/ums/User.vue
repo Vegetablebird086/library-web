@@ -23,17 +23,17 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="输入搜索：">
-              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="用户名"></el-input>
+            <el-form-item label="searchByInput：">
+              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="username"></el-input>
             </el-form-item>
-            <el-form-item label="用户编号：">
-              <el-input style="width: 203px" v-model="searchParams.id" placeholder="用户编号"></el-input>
+            <el-form-item label="IDnumber：">
+              <el-input style="width: 203px" v-model="searchParams.id" placeholder="IDnumber"></el-input>
             </el-form-item>
-<!--            <el-form-item label="用户状态：">-->
-<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="用户状态"></el-input>-->
+<!--            <el-form-item label="Status：">-->
+<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Status"></el-input>-->
 <!--            </el-form-item>-->
-            <el-form-item label="用户状态：">
-              <el-select v-model="searchParams.status" placeholder="全部" clearable>
+            <el-form-item label="Status：">
+              <el-select v-model="searchParams.status" placeholder="all" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -42,7 +42,7 @@
                 </el-option>
               </el-select>
             </el-form-item>
-            <el-form-item label="专业分类：">
+            <el-form-item label="Major：">
               <el-cascader
                   clearable
                   v-model="selectCategoryValue"
@@ -51,8 +51,8 @@
               >
               </el-cascader>
             </el-form-item>
-            <!--            <el-form-item label="上架状态：">-->
-            <!--              <el-select v-model="searchParams.status" placeholder="全部" clearable>-->
+            <!--            <el-form-item label="updatestatue：">-->
+            <!--              <el-select v-model="searchParams.status" placeholder="all" clearable>-->
             <!--                <el-option-->
             <!--                    v-for="item in publishStatusOptions"-->
             <!--                    :key="item.value"-->
@@ -68,13 +68,13 @@
                 @click="handleDeleteUserBatch()"
                 type="primary"
                 size="small">
-              批量删除
+              delete by choosing
             </el-button>
 <!--            <el-button-->
 <!--                style="float: right;margin-right: 15px"-->
 <!--                @click="handleReturnBookBatch()"-->
 <!--                size="small">-->
-<!--              批量删除-->
+<!--              delete by choosing-->
 <!--            </el-button>-->
           </div>
         </div>
@@ -99,42 +99,42 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="编号">
+            label="ID">
         </el-table-column>
         <el-table-column
             prop="username"
-            label="名称"
+            label="name"
             >
         </el-table-column>
         <el-table-column
             prop="department"
-            label="学院">
+            label="academy">
         </el-table-column>
         <el-table-column
             prop="major"
-            label="专业">
+            label="major">
         </el-table-column>
         <el-table-column
             prop="classNumber"
-            label="班级">
+            label="class">
         </el-table-column>
         <el-table-column
             prop="sex"
-            label="性别">
+            label="sex">
         </el-table-column>
         <el-table-column
             prop="telephone"
-            label="电话号"
+            label="phone"
             width="150">
         </el-table-column>
         <el-table-column
             prop="remain"
-            label="可借书籍"
+            label="lendable"
             >
         </el-table-column>
         <el-table-column
             align="center"
-            label="是否启用"
+            label="usingornot"
             v-slot="scope"
         >
           <el-switch
@@ -145,10 +145,10 @@
           >
           </el-switch>
         </el-table-column>
-        <!--        操作-->
+        <!--        operation-->
         <el-table-column
             fixed="right"
-            label="操作"
+            label="operation"
             width="150">
           <template slot-scope="scope">
             <el-button @click="handleChangeUser(scope.row)" type="primary" size="small">修改</el-button>
@@ -163,7 +163,7 @@
 <!--        <el-form label-width="80px" size="small" >-->
 <!--          <el-form-item label="库存编号">-->
 <!--            <template>-->
-<!--              <el-select v-model="role" placeholder="请选择">-->
+<!--              <el-select v-model="role" placeholder="option">-->
 <!--                <el-option-->
 <!--                    no-data-text="选择角色"-->
 <!--                    multiple="true"-->
@@ -192,7 +192,7 @@
         <el-form label-width="80px" size="small" >
           <el-form-item label="库存编号">
             <template>
-              <el-select v-model="role" placeholder="请选择"
+              <el-select v-model="role" placeholder="option"
                    multiple
                    filterable
                    allow-create
@@ -256,10 +256,10 @@ export default {
       bookCateOptions: [],
       publishStatusOptions: [{
         value: 1,
-        label: '上架'
+        label: 'on'
       }, {
         value: 0,
-        label: '下架'
+        label: 'off'
       }],
 
       // 表格数据
@@ -504,7 +504,7 @@ export default {
     //     }
     //   })
     // },
-    // 批量删除
+    // delete by choosing
     handleDeleteUserBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id
