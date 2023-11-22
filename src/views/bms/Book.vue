@@ -41,8 +41,8 @@
               >
               </el-cascader>
             </el-form-item>
-<!--            <el-form-item label="上架状态：">-->
-<!--              <el-select v-model="searchParams.status" placeholder="全部" clearable>-->
+<!--            <el-form-item label="Listing Status：">-->
+<!--              <el-select v-model="searchParams.status" placeholder="All" clearable>-->
 <!--                <el-option-->
 <!--                    v-for="item in publishStatusOptions"-->
 <!--                    :key="item.value"-->
@@ -158,10 +158,10 @@ export default {
       bookCateOptions: [],
       // publishStatusOptions: [{
       //   value: 1,
-      //   label: '上架'
+      //   label: 'Shelve'
       // }, {
       //   value: 0,
-      //   label: '下架'
+      //   label: 'Take down'
       // }],
 
       // 表格数据
@@ -274,7 +274,7 @@ export default {
       this.requestBook.post("/book/user/return", ids).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: 'Return successfully成功',
+            message: 'Return successfully',
             type: 'success'
           });
         } else {
