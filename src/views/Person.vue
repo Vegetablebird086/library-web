@@ -281,7 +281,7 @@ export default {
         } else {
           this.$message({
             type: 'error',
-            message: "密码修改失败"
+            message: "Failed to change the password"
           })
         }
       })

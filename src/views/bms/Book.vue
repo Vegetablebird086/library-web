@@ -298,7 +298,7 @@ export default {
            });
          } else {
            this.$message({
-             message: 'Star 失败',
+             message: 'Star failed',
              type: 'warning'
            });
          }

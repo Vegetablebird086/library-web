@@ -70,7 +70,7 @@ export default {
         if (res.code == 200) {
           this.$message.success("Log out succesfully")
         } else {
-          this.$message.error("Log out fail, server error失败，服务器异常")
+          this.$message.error("Log out fail, server error")
         }
       })
     }
