@@ -86,7 +86,7 @@
         </el-table-column>
         <el-table-column
             prop="department"
-            label="学院">
+            label="college">
         </el-table-column>
         <el-table-column
             prop="describe"

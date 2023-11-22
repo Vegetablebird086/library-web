@@ -107,7 +107,7 @@
         </el-table-column>
         <el-table-column
             prop="major"
-            label="专业"
+            label="major"
         >
         </el-table-column>
         <el-table-column
@@ -146,7 +146,7 @@
       <!--添加角色信息      -->
       <el-dialog title="添加权限" :visible.sync="dialogFormVisible" width="30%">
         <el-form label-width="80px" size="small" :data="usermajor">
-          <el-form-item label="专业">
+          <el-form-item label="major">
             <el-input v-model="usermajor.major" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="描述">
