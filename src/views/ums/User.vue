@@ -26,16 +26,16 @@
            
             <el-form-item label="Enter Search：">
              
-              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="user name"></el-input>
+              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Username"></el-input>
             </el-form-item>
-            <el-form-item label="IDnumber：">
-              <el-input style="width: 203px" v-model="searchParams.id" placeholder="IDnumber"></el-input>
+            <el-form-item label="ID Number：">
+              <el-input style="width: 203px" v-model="searchParams.id" placeholder="ID Number"></el-input>
             </el-form-item>
 <!--            <el-form-item label="Status：">-->
 <!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Status"></el-input>-->
 <!--            </el-form-item>-->
             <el-form-item label="Status：">
-              <el-select v-model="searchParams.status" placeholder="all" clearable>
+              <el-select v-model="searchParams.status" placeholder="All" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -53,8 +53,8 @@
               >
               </el-cascader>
             </el-form-item>
-            <!--            <el-form-item label="updatestatue：">-->
-            <!--              <el-select v-model="searchParams.status" placeholder="all" clearable>-->
+            <!--            <el-form-item label="Status：">-->
+            <!--              <el-select v-model="searchParams.status" placeholder="All" clearable>-->
             <!--                <el-option-->
             <!--                    v-for="item in publishStatusOptions"-->
             <!--                    :key="item.value"-->
@@ -136,7 +136,7 @@
         </el-table-column>
         <el-table-column
             align="center"
-            label="usingornot"
+            label="Enable"
             v-slot="scope"
         >
           <el-switch
@@ -151,19 +151,19 @@
         <el-table-column
             fixed="right"
             label="Operation"
-            width="150">
+            width="300">
           <template slot-scope="scope">
-            <el-button @click="handleChangeUser(scope.row)" type="primary" size="small">修改</el-button>
-            <el-button @click="handleDeleteUser(scope.row)" type="success" size="small">删除</el-button>
-            <el-button @click="changeSelectDialog(scope.row)" size="small">分配角色</el-button>
+            <el-button @click="handleChangeUser(scope.row)" type="primary" size="small">Modify</el-button>
+            <el-button @click="handleDeleteUser(scope.row)" type="success" size="small">Delete</el-button>
+            <el-button @click="changeSelectDialog(scope.row)" size="small">Allocate Rule</el-button>
           </template>
         </el-table-column>
 
       </el-table>
 
-<!--      <el-dialog title="分配角色" :visible.sync="dialogFormVisible" width="30%" >-->
-<!--        <el-form label-width="80px" size="small" >-->
-<!--          <el-form-item label="库存编号">-->
+<!--      <el-dialog title="Allocate Role" :visible.sync="dialogFormVisible" width="30%" >-->
+<!--        <el-form label-width="100px" size="small" >-->
+<!--          <el-form-item label="Stock Number">-->
 <!--            <template>-->
 <!--              <el-select v-model="role" placeholder="please select">-->
 <!--                <el-option-->
@@ -182,17 +182,17 @@
 <!--          </el-form-item>-->
 
 <!--          <el-form-item>-->
-<!--            <el-button type="primary" @click="handleDialogChange">确定</el-button>-->
-<!--            <el-button type="primary" @click="changeDialogFormVisible">取消</el-button>-->
+<!--            <el-button type="primary" @click="handleDialogChange">Confirm</el-button>-->
+<!--            <el-button type="primary" @click="changeDialogFormVisible">Cancel</el-button>-->
 <!--          </el-form-item>-->
 <!--        </el-form>-->
 <!--      </el-dialog>-->
 
 
-<!--    为用户分配角色 selectDialog-->
-      <el-dialog title="分配角色" :visible.sync="selectDialog" width="30%" >
-        <el-form label-width="80px" size="small" >
-          <el-form-item label="库存编号">
+<!--    为用户Allocate Role selectDialog-->
+      <el-dialog title="Allocate Role" :visible.sync="selectDialog" width="30%" >
+        <el-form label-width="150px" size="small" >
+          <el-form-item label="Stock Number">
             <template>
               <el-select v-model="role" placeholder="please select"
                    multiple
@@ -213,8 +213,8 @@
           </el-form-item>
 
           <el-form-item>
-            <el-button type="primary" @click="confirmSelect">确定</el-button>
-            <el-button type="primary" @click="cacel">取消</el-button>
+            <el-button type="primary" @click="confirmSelect">Confirm</el-button>
+            <el-button type="primary" @click="cacel">Cancel</el-button>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -305,12 +305,12 @@ export default {
     handleSizeChange(val) {
       this.params.pageSize=val
       this.getUserDetail()
-      console.log(`每页 ${val} 条`);
+      console.log(`${val} items / page`);
     },
     handleCurrentChange(val) {
       this.params.currPage=val
       this.getUserDetail()
-      console.log(`当前页: ${val}`);
+      console.log(`Current page: ${val}`);
     },
     // 表格多选框
     handleSelectionChange(val) {
@@ -346,9 +346,9 @@ export default {
     // 修改用户信息
     handleChangeUser(row) {
       console.log([row.id])
-      this.$confirm('此操作将永久修改个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation will change personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/user/change", [row.id]).then(res => {
@@ -368,7 +368,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       });
 
@@ -376,15 +376,15 @@ export default {
     // 删除
     handleDeleteUser(row) {
       console.log([row.id])
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('[Warning]This operation will delete personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/user/delete", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+              message: 'Delete Successfully',
               type: 'success'
             });
             this.getUserDetail()
@@ -398,12 +398,12 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       });
 
     },
-    // 分配角色
+    // Allocate Role
     // dialog
     async changeSelectDialog(row) {
       this.selectDialog = !this.selectDialog
@@ -418,7 +418,7 @@ export default {
         console.log(this.userId)
       }
     },
-    // 用户角色回显
+    // User Role回显
     selectInit() {
       if (this.userId == null) return
       this.request.get("/member/role/roles/" + this.userId).then(res => {
@@ -445,9 +445,9 @@ export default {
       })
     },
     confirmSelect(row) {
-      this.$confirm("是否确定分配角色", "提示", {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm("Are you sure to allocate it", "Warning", {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         var req = {
@@ -466,7 +466,7 @@ export default {
           if (res.code == 200) {
             this.$message({
               type: 'success',
-              message: '分配成功!'
+              message: 'Allocate Successfully!'
             });
           } else {
             this.$message({
@@ -479,7 +479,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '分配失败'
+          message: 'Allocate failed'
         });
       })
     },
@@ -506,21 +506,21 @@ export default {
     //     }
     //   })
     // },
-    // 批量删除
+    // Bulk Editing
     handleDeleteUserBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id
       })
       console.log(ids)
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('[Warning]This operation will delete personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/user/delete", ids).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+              message: 'Delete Successfully',
               type: 'success'
             });
             this.getUserDetail()
@@ -534,7 +534,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       });
     },

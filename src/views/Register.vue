@@ -4,7 +4,7 @@
       <div style="margin: 20px 0; text-align: center; font-size: 24px"><b>注 册</b></div>
       <el-form :model="user" :rules="rules" ref="userForm">
         <el-form-item prop="username">
-          <el-input placeholder="Please input user name" size="medium" style="margin: 5px 0" prefix-icon="el-icon-user" v-model="user.username"></el-input>
+          <el-input placeholder="Please input Username" size="medium" style="margin: 5px 0" prefix-icon="el-icon-user" v-model="user.username"></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input placeholder="please input password" size="medium" style="margin: 5px 0" prefix-icon="el-icon-lock" show-password v-model="user.password"></el-input>
@@ -45,7 +45,7 @@ export default {
             callback();
           } else {
             console.log(res)
-            callback("user name already exists")
+            callback("Username already exists")
           }
         })
       }

@@ -25,10 +25,10 @@
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
             <el-form-item label="Enter Search：">
-              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="角色名"></el-input>
+              <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="role"></el-input>
             </el-form-item>
-            <el-form-item label="角色编号：">
-              <el-input style="width: 203px" v-model="searchParams.id" placeholder="角色编号"></el-input>
+            <el-form-item label="Role ID：">
+              <el-input style="width: 203px" v-model="searchParams.id" placeholder="Role ID"></el-input>
             </el-form-item>
 <!--            <el-form-item label="Publisher">-->
 <!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Book Publisher"></el-input>-->
@@ -42,8 +42,8 @@
 <!--              >-->
 <!--              </el-cascader>-->
 <!--            </el-form-item>-->
-            <el-form-item label="状态：">
-              <el-select v-model="searchParams.status" placeholder="all" clearable>
+            <el-form-item label="Status：">
+              <el-select v-model="searchParams.status" placeholder="All" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -65,14 +65,14 @@
                 style="float: right;margin-right: 15px"
                 @click="handleChangeroleBatch()"
                 size="small">
-              批量修改
+              Bulk Editing
             </el-button>
             <el-button
                 style="float: right"
                 @click="changeDialogFormVisible"
                 type="primary"
                 size="small">
-              添加
+              Add
             </el-button>
           </div>
         </div>
@@ -98,16 +98,16 @@
         <el-table-column
             prop="id"
             label="Number"
-            width="50">
+            width="150">
         </el-table-column>
         <el-table-column
             prop="name"
-            label="角色"
+            label="Role"
         >
         </el-table-column>
         <el-table-column
             prop="role"
-            label="角色名">
+            label="Role Name">
         </el-table-column>
         <el-table-column
             prop="describe"
@@ -115,7 +115,7 @@
         </el-table-column>
         <el-table-column
             align="center"
-            label="usingornot"
+            label="Enable"
             v-slot="scope"
         >
           <el-switch
@@ -127,7 +127,7 @@
           </el-switch>
         </el-table-column>
         <el-table-column
-            label="菜单列表"
+            label="Menus List"
             v-slot="scope"
         >
           <router-link :to="{path: '/sms/second/menuDistribution', query: {roleId: scope.row.id}}"
@@ -139,30 +139,30 @@
         <el-table-column
             fixed="right"
             label="Operation"
-            width="150">
+            width="200">
           <template slot-scope="scope">
-            <el-button @click="handleChangerole(scope.row)" type="primary" size="small">修改</el-button>
-            <el-button @click="handleDeleterole(scope.row)" type="success" size="small">删除</el-button>
+            <el-button @click="handleChangerole(scope.row)" type="primary" size="small">Modify</el-button>
+            <el-button @click="handleDeleterole(scope.row)" type="success" size="small">Delete</el-button>
           </template>
         </el-table-column>
 
       </el-table>
 
-      <!--添加角色信息      -->
-      <el-dialog title="添加角色" :visible.sync="dialogFormVisible" width="30%">
-        <el-form label-width="80px" size="small" :data="role">
-          <el-form-item label="角色">
+      <!--Add Role      -->
+      <el-dialog title="Add Role" :visible.sync="dialogFormVisible" width="30%">
+        <el-form label-width="100px" size="small" :data="role">
+          <el-form-item label="Role">
             <el-input v-model="role.name" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="角色名">
+          <el-form-item label="Role Name">
             <el-input v-model="role.role" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="Describe">
             <el-input v-model="role.describe" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="handleAddRoleOrChangeRole">确定</el-button>
-            <el-button type="primary" @click="changeDialogFormVisible">取消</el-button>
+            <el-button type="primary" @click="handleAddRoleOrChangeRole">Confirm</el-button>
+            <el-button type="primary" @click="changeDialogFormVisible">Cancel</el-button>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -245,12 +245,12 @@ export default {
     handleSizeChange(val) {
       this.params.pageSize = val
       this.getroleDetail()
-      console.log(`每页 ${val} 条`);
+      console.log(`${val} items / page`);
     },
     handleCurrentChange(val) {
       this.params.currPage = val
       this.getroleDetail()
-      console.log(`当前页: ${val}`);
+      console.log(`Current page: ${val}`);
     },
     // 表格多选框
     handleSelectionChange(val) {
@@ -302,15 +302,15 @@ export default {
     // 删除
     handleDeleterole(row) {
       console.log([row.id])
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('[Warning]This operation will delete personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/role/delete", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+              message: 'Delete Successfully',
               type: 'success'
             });
             this.getroleDetail()
@@ -324,7 +324,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       });
 
@@ -356,15 +356,15 @@ export default {
         return item.id
       })
       console.log(ids)
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('[Warning]This operation will delete personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/role/delete", ids).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+              message: 'Delete Successfully',
               type: 'success'
             });
             this.getroleDetail()
@@ -378,7 +378,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       });
     },
@@ -388,12 +388,12 @@ export default {
       this.dialogFormVisible = !this.dialogFormVisible
       this.role = {}
     },
-    // 添加角色
+    // Add Role
     handleAddRoleOrChangeRole() {
       console.log(this.role)
-      this.$confirm('是否确定添加？', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('Are you sure to add it？', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         if (this.role.id == null) {
@@ -404,7 +404,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       })
     },
@@ -412,7 +412,7 @@ export default {
       this.request.post("/member/role/save", this.role).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '添加成功',
+            message: 'Add Successfully',
             type: 'success'
           });
           this.getroleDetail()

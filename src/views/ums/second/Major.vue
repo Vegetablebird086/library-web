@@ -41,8 +41,8 @@
             <!--              >-->
             <!--              </el-cascader>-->
             <!--            </el-form-item>-->
-            <!--            <el-form-item label="updatestatue：">-->
-            <!--              <el-select v-model="searchParams.status" placeholder="all" clearable>-->
+            <!--            <el-form-item label="Status：">-->
+            <!--              <el-select v-model="searchParams.status" placeholder="All" clearable>-->
             <!--                <el-option-->
             <!--                    v-for="item in publishStatusOptions"-->
             <!--                    :key="item.value"-->
@@ -64,20 +64,20 @@
                 style="float: right;margin-right: 15px"
                 @click="handleChangeusermajorBatch()"
                 size="small">
-              批量修改
+              Bulk Editing
             </el-button>
             <el-button
                 style="float: right"
                 @click="changeDialogFormVisible"
                 type="primary"
                 size="small">
-              添加
+              Add
             </el-button>
             <el-button
                 style="float: right"
                 size="small">
 
-              <router-link to="/ums/userInfo" style="text-decoration:none">回退</router-link>
+              <router-link to="/ums/userInfo" style="text-decoration:none">Back</router-link>
             </el-button>
           </div>
         </div>
@@ -101,9 +101,9 @@
             width="55">
         </el-table-column>
         <el-table-column
-            prop="id""
+            prop="id"
             label="Number"
-            width="50">
+            width="150">
         </el-table-column>
         <el-table-column
             prop="major"
@@ -117,7 +117,7 @@
         </el-table-column>
         <el-table-column
             align="center"
-            label="usingornot"
+            label="Enable"
             v-slot="scope"
             prop="status"
         >
@@ -134,30 +134,30 @@
         <el-table-column
             fixed="right"
             label="Operation"
-            width="150">
+            width="300">
           <template slot-scope="scope">
-            <el-button @click="handleChangeusermajor(scope.row)" type="primary" size="small">修改</el-button>
-            <el-button @click="handleDeleteusermajor(scope.row)" type="success" size="small">删除</el-button>
+            <el-button @click="handleChangeusermajor(scope.row)" type="primary" size="small">Modify</el-button>
+            <el-button @click="handleDeleteusermajor(scope.row)" type="success" size="small">Delete</el-button>
           </template>
         </el-table-column>
 
       </el-table>
 
-      <!--添加角色信息      -->
-      <el-dialog title="添加权限" :visible.sync="dialogFormVisible" width="30%">
-        <el-form label-width="80px" size="small" :data="usermajor">
+      <!--Add Role      -->
+      <el-dialog title="Add Permission" :visible.sync="dialogFormVisible" width="30%">
+        <el-form label-width="100px" size="small" :data="usermajor">
           <el-form-item label="major">
             <el-input v-model="usermajor.major" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="Describe">
             <el-input v-model="usermajor.describe" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="状态">
+          <el-form-item label="Status">
             <el-input v-model="usermajor.status" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="handleAddusermajorOrChangeusermajor">确定</el-button>
-            <el-button type="primary" @click="changeDialogFormVisible">取消</el-button>
+            <el-button type="primary" @click="handleAddusermajorOrChangeusermajor">Confirm</el-button>
+            <el-button type="primary" @click="changeDialogFormVisible">Cancel</el-button>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -243,12 +243,12 @@ export default {
     handleSizeChange(val) {
       this.params.pageSize = val
       this.getusermajorDetail()
-      console.log(`每页 ${val} 条`);
+      console.log(`${val} items / page`);
     },
     handleCurrentChange(val) {
       this.params.currPage = val
       this.getusermajorDetail()
-      console.log(`当前页: ${val}`);
+      console.log(`Current page: ${val}`);
     },
     // 表格多选框
     handleSelectionChange(val) {
@@ -299,15 +299,15 @@ export default {
     // 删除
     handleDeleteusermajor(row) {
       console.log([row.id])
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('[Warning]This operation will delete personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/usermajor/delete", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+              message: 'Delete Successfully',
               type: 'success'
             });
             this.getusermajorDetail()
@@ -321,7 +321,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       });
 
@@ -347,21 +347,21 @@ export default {
         }
       })
     },
-    // 批量删除
+    // Bulk Editing
     handleDeleteusermajorBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id
       })
       console.log(ids)
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('[Warning]This operation will delete personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/usermajor/delete", ids).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+              message: 'Delete Successfully',
               type: 'success'
             });
             this.getusermajorDetail()
@@ -375,7 +375,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       });
     },
@@ -385,12 +385,12 @@ export default {
       this.dialogFormVisible = !this.dialogFormVisible
       this.usermajor = {}
     },
-    // 添加角色
+    // Add Role
     handleAddusermajorOrChangeusermajor() {
       console.log(this.usermajor)
-      this.$confirm('是否确定添加？', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('Are you sure add it？', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         if (this.usermajor.id == null) {
@@ -401,7 +401,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       })
     },
@@ -411,7 +411,7 @@ export default {
       this.request.post("/member/usermajor/save", this.usermajor).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '添加成功',
+            message: 'Add Successfully',
             type: 'success'
           });
           this.getusermajorDetail()

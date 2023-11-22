@@ -84,9 +84,9 @@ export default {
         menuIdList :  menuIds
       }
       console.log(req)
-      this.$confirm('此操作将永久修改个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation will change personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/rolemenurelation/change", req).then(res => {
@@ -105,7 +105,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消'
+          message: 'Already Cancel'
         });
       });
 

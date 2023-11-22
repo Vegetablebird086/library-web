@@ -25,9 +25,9 @@
 <!--        <span>{{user.username}}</span>-->
       </div>
 
-      <el-dropdown-menu slot="dropdown" style="width: 100px; text-align: center">
+      <el-dropdown-menu slot="dropdown" style="width: 200px; text-align: center">
         <el-dropdown-item style="font-size: 14px; padding: 5px 0">
-          <router-link to="/person" style="text-decoration:none; color:#fff;">
+          <router-link to="/person" style="text-decoration:none; color:#000;">
             <span >Personal Information</span></router-link>
         </el-dropdown-item>
         <el-dropdown-item style="font-size: 14px; padding: 5px 0">
@@ -68,9 +68,9 @@ export default {
         console.log(res)
         this.$store.commit("logout")
         if (res.code == 200) {
-          this.$message.success("Log out succesfully")
+          this.$message.success("Log out successfully")
         } else {
-          this.$message.error("Log out fail, server error失败，服务器异常")
+          this.$message.error("Log out fail, server error")
         }
       })
     }
