@@ -23,16 +23,16 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="searchByInput：">
+            <el-form-item label="Enter Search：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="菜单名"></el-input>
             </el-form-item>
-            <el-form-item label="菜单编号：">
-              <el-input style="width: 203px" v-model="searchParams.id" placeholder="菜单编号"></el-input>
+            <el-form-item label="Menus Number：">
+              <el-input style="width: 203px" v-model="searchParams.id" placeholder="菜单Number"></el-input>
             </el-form-item>
 <!--            <el-form-item label="Publisher">-->
-<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Publisher"></el-input>-->
+<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Book Publisher"></el-input>-->
 <!--            </el-form-item>-->
-<!--            <el-form-item label="classification：">-->
+<!--            <el-form-item label="Book Categorie：">-->
 <!--              <el-cascader-->
 <!--                  clearable-->
 <!--                  v-model="selectCategoryValue"-->
@@ -89,7 +89,7 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="ID">
+            label="Number">
         </el-table-column>
         <el-table-column
             prop="menuName"
@@ -256,7 +256,7 @@ export default {
       this.request.post("/member/menu/update", row).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
         } else {
@@ -281,7 +281,7 @@ export default {
         this.request.post("/member/menu/change", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '修改成功',
+              message: 'update successfully',
               type: 'success'
             });
             this.getmenuDetail()

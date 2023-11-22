@@ -16,7 +16,7 @@
       <el-form-item label="username" prop="username">
         <el-input v-model="form.username" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="academy">
+      <el-form-item label="college">
         <el-cascader
             clearable
             v-model="selectDepartmentValue"
@@ -34,22 +34,22 @@
         >
         </el-cascader>
       </el-form-item>
-      <el-form-item label="班级">
+      <el-form-item label="class">
         <el-input v-model="form.classNumber" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="sex">
+      <el-form-item label="gender">
 <!--        <el-radio v-model="1" label="1">男</el-radio>-->
 <!--        <el-radio v-model="0" label="0">女</el-radio>-->
       </el-form-item>
-      <el-form-item label="电话" prop="telephone">
+      <el-form-item label="phone" prop="telephone">
         <el-input v-model="form.telephone" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="lendable">
+      <el-form-item label="Books available for loan">
         <el-input type="text" v-model="form.remain" autocomplete="off" :disabled="true"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="change" :disabled="false">修改个人信息</el-button>
-        <el-button type="primary" @click="changeDialogFormVisible" :disabled="false">修改密码</el-button>
+        <el-button type="primary" @click="change" :disabled="false">Modify personal information</el-button>
+        <el-button type="primary" @click="changeDialogFormVisible" :disabled="false">Change Password</el-button>
       </el-form-item>
     </el-form>
 
@@ -244,7 +244,7 @@ export default {
         this.request.post("/member/user/change", this.form).then(res =>{
           if(res.code == 200) {
             this.$message({
-              message: '修改成功',
+              message: 'update successfully',
               type: 'success'
             })
             // 成功就重新设置
@@ -275,7 +275,7 @@ export default {
         if (res == 200) {
           this.$message({
             type: 'success',
-            message: "密码修改成功"
+            message: "password update successfully"
           })
           this.changeDialogFormVisible()
         } else {
@@ -316,7 +316,7 @@ export default {
       //     this.changeMessage()
       //     this.$message({
       //       type: 'success',
-      //       message: '修改成功!'
+      //       message: 'update successfully!'
       //     });
       //   }).catch(() => {
       //     this.$message({

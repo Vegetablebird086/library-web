@@ -23,14 +23,14 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="searchByInput：">
+            <el-form-item label="Enter Search：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
-            <el-form-item label="BookNumber：">
-              <el-input style="width: 203px" v-model="searchParams.id" placeholder="BookNumber"></el-input>
+            <el-form-item label="Book Number：">
+              <el-input style="width: 203px" v-model="searchParams.id" placeholder="Book Number"></el-input>
             </el-form-item>
             <el-form-item label="Publisher">
-              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Publisher"></el-input>
+              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Book Publisher"></el-input>
             </el-form-item>
             <el-form-item label="Book Category：">
               <el-cascader
@@ -89,16 +89,16 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="ID"
+            label="Number"
             width="50">
         </el-table-column>
         <el-table-column
             prop="bookName"
-            label="name">
+            label="Name">
         </el-table-column>
         <el-table-column
             prop="writer"
-            label="writer">
+            label="Author">
         </el-table-column>
         <el-table-column
             prop="category"
@@ -106,7 +106,7 @@
         </el-table-column>
         <el-table-column
             prop="publisher"
-            label="publisher">
+            label="Publisher">
         </el-table-column>
         <el-table-column
             prop="stock"
@@ -116,13 +116,13 @@
             prop="status"
             label="状态">
         </el-table-column>
-        <!--        operation-->
+        <!--        Operation-->
         <el-table-column
-            fixed="right"
-            label="operation"
+            fixed="right
+            label="Operation"
             width="180">
           <template slot-scope="scope">
-            <el-button v-if="scope.row.status == 0" @click="handleSave(scope.row)" type="primary" size="small">上架</el-button>
+            <el-button v-if="scope.row.status == 0" @click="handleSave(scope.row)" type="primary" size="small">上架</el-button
             <el-button v-else @click="handleDelete(scope.row)" type="primary" size="small">off</el-button>
             <el-button @click="changeDialogFormVisible(scope.row)" type="success" size="small">改变库存</el-button>
           </template>

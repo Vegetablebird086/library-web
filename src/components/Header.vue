@@ -68,7 +68,7 @@ export default {
         console.log(res)
         this.$store.commit("logout")
         if (res.code == 200) {
-          this.$message.success("Log out succesfully成功")
+          this.$message.success("Log out succesfully")
         } else {
           this.$message.error("Log out fail, server error失败，服务器异常")
         }

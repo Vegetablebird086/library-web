@@ -23,16 +23,17 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="searchByInput：">
+            <el-form-item label="Enter Search：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
-<!--            <el-form-item label="BookNumber：">-->
-<!--              <el-input style="width: 203px" v-model="searchParams.id" placeholder="BookNumber"></el-input>-->
+
+<!--            <el-form-item label="Book Number：">-->
+<!--              <el-input style="width: 203px" v-model="searchParams.id" placeholder="Book Number"></el-input>-->
 <!--            </el-form-item>-->
 <!--            <el-form-item label="Publisher">-->
-<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Publisher"></el-input>-->
+<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Book Publisher"></el-input>-->
 <!--            </el-form-item>-->
-<!--            <el-form-item label="classification：">-->
+<!--            <el-form-item label="Book Categorie：">-->
 <!--              <el-cascader-->
 <!--                  clearable-->
 <!--                  v-model="selectCategoryValue"-->
@@ -57,7 +58,7 @@
                 style="float: right"
                 @click="handleDeleteuserdepartmentBatch()"
                 type="primary"
-                size="small">
+                size="small">              批量删除
               delete by choosing
             </el-button>
           </div>
@@ -82,15 +83,15 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="ID">
+            label="Number">
         </el-table-column>
         <el-table-column
             prop="department"
-            label="academy">
+            label="college">
         </el-table-column>
         <el-table-column
             prop="describe"
-            label="description">
+            label="Describe">
         </el-table-column>
         <el-table-column
           align="center"
@@ -111,10 +112,10 @@
         >
           <router-link :to="{path: '/ums/second/major', query: {departmentId: scope.row.id}}">分配专业</router-link>
         </el-table-column>
-        <!--        operation-->
+        <!--        Operation-->
         <el-table-column
             fixed="right"
-            label="operation"
+            label="Operation"
             width="150">
           <template slot-scope="scope">
             <el-button @click="handleChangeuserdepartment(scope.row)" type="primary" size="small">修改</el-button>
@@ -133,7 +134,7 @@
           <el-form-item label="角色名">
             <el-input v-model="userdepartment.department" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="description">
+          <el-form-item label="Describe">
             <el-input v-model="userdepartment.describe" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item>
@@ -248,7 +249,7 @@ export default {
       this.request.post("/member/userdepartment/update", row).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
         } else {
@@ -314,7 +315,7 @@ export default {
       this.request.post("/member/userdepartment/update", this.userdepartment).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
           this.changeDialogFormVisible()

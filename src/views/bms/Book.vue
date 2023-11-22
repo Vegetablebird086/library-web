@@ -23,14 +23,14 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="searchByInput：">
+            <el-form-item label="Enter Search：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
-            <el-form-item label="BookNumber：">
-              <el-input style="width: 203px" v-model="searchParams.bookId" placeholder="BookNumber"></el-input>
+            <el-form-item label="Book Number：">
+              <el-input style="width: 203px" v-model="searchParams.bookId" placeholder="Book Number"></el-input>
             </el-form-item>
             <el-form-item label="Publisher">
-              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Publisher"></el-input>
+              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Book Publisher"></el-input>
             </el-form-item>
             <el-form-item label="Book Category：">
               <el-cascader
@@ -58,13 +58,13 @@
                 @click="handleLendBookBatch()"
                 type="primary"
                 size="small">
-              批量借书
+              Borrow Books in Bulk
             </el-button>
             <el-button
                 style="float: right;margin-right: 15px"
                 @click="handleReturnBookBatch()"
                 size="small">
-              批量还书
+              Return Books in Bulk
             </el-button>
           </div>
         </div>
@@ -89,32 +89,32 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="ID">
+            label="Number">
         </el-table-column>
         <el-table-column
             prop="bookName"
-            label="name">
+            label="Name">
         </el-table-column>
         <el-table-column
             prop="writer"
-            label="writer">
+            label="Author">
         </el-table-column>
         <el-table-column
             prop="publisher"
-            label="publisher">
+            label="Publisher">
         </el-table-column>
         <el-table-column
             prop="category"
-            label="classification">
+            label="Book Categorie">
         </el-table-column>
         <el-table-column
             prop="describe"
-            label="description">
+            label="Describe">
         </el-table-column>
-<!--        operation-->
+<!--        Operation-->
         <el-table-column
             fixed="right"
-            label="operation"
+            label="Operation"
             width="220">
           <template slot-scope="scope">
             <el-button @click="handleLendBook(scope.row)" type="primary" size="small">Borrow</el-button>

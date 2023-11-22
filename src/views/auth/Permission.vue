@@ -23,16 +23,16 @@
 
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="searchParams" size="small" label-width="140px">
-            <el-form-item label="searchByInput：">
+            <el-form-item label="Enter Search：">
               <el-input style="width: 203px" v-model="searchParams.keyword" placeholder="Key word"></el-input>
             </el-form-item>
-<!--            <el-form-item label="BookNumber：">-->
-<!--              <el-input style="width: 203px" v-model="searchParams.id" placeholder="BookNumber"></el-input>-->
+<!--            <el-form-item label="Book Number：">-->
+<!--              <el-input style="width: 203px" v-model="searchParams.id" placeholder="Book Number"></el-input>-->
 <!--            </el-form-item>-->
 <!--            <el-form-item label="Publisher">-->
-<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Publisher"></el-input>-->
+<!--              <el-input style="width: 203px" v-model="searchParams.publisher" placeholder="Book Publisher"></el-input>-->
 <!--            </el-form-item>-->
-<!--            <el-form-item label="classification：">-->
+<!--            <el-form-item label="Book Categorie：">-->
 <!--              <el-cascader-->
 <!--                  clearable-->
 <!--                  v-model="selectCategoryValue"-->
@@ -96,7 +96,7 @@
         </el-table-column>
         <el-table-column
             prop="id"
-            label="ID"
+            label="Number"
             width="50">
         </el-table-column>
         <el-table-column
@@ -123,7 +123,7 @@
         <!--        operation-->
         <el-table-column
             fixed="right"
-            label="operation"
+            label="Operation"
             width="150">
           <template slot-scope="scope">
             <el-button @click="handleChangepermission(scope.row)" type="primary" size="small">修改</el-button>
@@ -142,7 +142,7 @@
 <!--          <el-form-item label="角色名">-->
 <!--            <el-input v-model="permission.permissionKey" autocomplete="off"></el-input>-->
 <!--          </el-form-item>-->
-<!--          <el-form-item label="description">-->
+<!--          <el-form-item label="Describe">-->
 <!--            <el-input v-model="permission.describe" autocomplete="off"></el-input>-->
 <!--          </el-form-item>-->
           <el-form-item>
@@ -246,7 +246,7 @@ export default {
       this.request.post("/member/permission/update", row).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
         } else {
@@ -267,7 +267,7 @@ export default {
       this.request.post("/member/permission/update", this.permission).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '修改成功',
+            message: 'update successfully',
             type: 'success'
           });
           this.changeDialogFormVisible()
