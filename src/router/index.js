@@ -55,14 +55,14 @@ const routes = [
         children: [
           {
             path: 'book',
-            name: 'Book list',
-            meta: { title: 'Book list'},
+            name: 'Book List',
+            meta: { title: 'Book List'},
             component: () => (import("../views/bms/Book"))
           },
           {
             path: 'bookManage',
-            name: 'book Manage',
-            meta: { title: 'book Manage'},
+            name: 'Book Manage',
+            meta: { title: 'Book Manage'},
             component: () => (import("../views/bms/BookManager"))
           },
         ]
@@ -77,7 +77,7 @@ const routes = [
           {
             path: 'user',
             name: 'User List',
-            meta: { title: '用户列表'},
+            meta: { title: 'user list'},
             component: () => (import("../views/ums/User"))
           },
           {
@@ -88,20 +88,20 @@ const routes = [
           },
           {
             path: 'second/major',
-            name: '专业列表',
-            meta: { title: '专业列表'},
+            name: 'majorlist',
+            meta: { title: 'majorlist'},
             component: () => (import("../views/ums/second/Major"))
           },
           {
             path: 'userCollection',
-            name: 'Star record',
-            meta: { title: 'Star record'},
+            name: 'Star Record',
+            meta: { title: 'Star Record'},
             component: () => import('../views/ums/UserCollection')
           },
           {
             path: 'userHistory',
-            name: 'Borrow record记录',
-            meta: { title: 'Borrow record记录'},
+            name: 'Borrow Record',
+            meta: { title: 'Borrow Record'},
             component: () => import('../views/ums/UserHistory')
           },
         ],
@@ -109,37 +109,37 @@ const routes = [
       // 权限
       {
         path: 'sms',
-        name: '权限',
-        meta: {title: '权限'},
+        name: 'Permission',
+        meta: {title: 'Permission'},
         component: () => (import('../views/auth/index')),
         children: [
           {
             path: 'role',
-            name: '角色列表',
-            meta: { title: '角色列表'},
+            name: 'Role List',
+            meta: { title: 'Role List'},
             component: () => (import("../views/auth/Role"))
           },{
             path: 'userRole',
-            name: '用户角色',
-            meta: { title: '用户角色'},
+            name: 'User Role',
+            meta: { title: 'User Role'},
             component: () => (import("../views/auth/UserRole"))
           },
           {
             path: 'menu',
-            name: '菜单列表',
-            meta: { title: '菜单列表'},
+            name: 'Menu List',
+            meta: { title: 'Menu List'},
             component: () => (import("../views/auth/Menu"))
           },
           {
             path: 'permission',
-            name: '权限列表',
-            meta: { title: '权限列表'},
+            name: 'Permission List',
+            meta: { title: 'Permission List'},
             component: () => (import("../views/auth/Permission"))
           },
           {
             path: 'second/menuDistribution',
-            name: '角色列表',
-            meta: { title: '角色列表'},
+            name: 'Role List',
+            meta: { title: 'Role List'},
             component: () => (import("../views/auth/second/MenuDistribution"))
           },
         ]
@@ -147,8 +147,8 @@ const routes = [
 
       {
         path: 'person',
-        name: '个人信息',
-        meta: { title: '基本信息'},
+        name: 'Personal Information',
+        meta: { title: 'Personal Information'},
         component: () => import('../views/Person')
       },
 
