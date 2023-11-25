@@ -41,8 +41,8 @@
               >
               </el-cascader>
             </el-form-item>
-            <!--            <el-form-item label="updatestatue：">-->
-            <!--              <el-select v-model="searchParams.status" placeholder="all" clearable>-->
+            <!--            <el-form-item label="Status：">-->
+            <!--              <el-select v-model="searchParams.status" placeholder="All" clearable>-->
             <!--                <el-option-->
             <!--                    v-for="item in publishStatusOptions"-->
             <!--                    :key="item.value"-->
@@ -111,7 +111,7 @@
         </el-table-column>
         <el-table-column
             align="center"
-            label="usingornot"
+            label="Enable"
             v-slot="scope"
         >
           <el-switch
@@ -126,10 +126,10 @@
         <el-table-column
             fixed="right"
             label="Operation"
-            width="200">
+            width="300">
           <template slot-scope="scope">
-            <el-button @click="handleChangeStatus(scope.row)" type="primary" size="small">修改状态</el-button>
-            <el-button @click="handleDeleteRecord(scope.row)" type="success" size="small">删除记录</el-button>
+            <el-button @click="handleChangeStatus(scope.row)" type="primary" size="small">Modify Status</el-button>
+            <el-button @click="handleDeleteRecord(scope.row)" type="success" size="small">Delete Record</el-button>
           </template>
         </el-table-column>
 
@@ -139,16 +139,16 @@
 
     <!--      修改状态-->
 <!--          <el-dialog title="修改状态" :visible.sync="dialogFormVisible" width="30%" >-->
-<!--            <el-form label-width="80px" size="small" >-->
-<!--              <el-form-item label="库存编号">-->
+<!--            <el-form label-width="100px" size="small" >-->
+<!--              <el-form-item label="Stock Number">-->
 <!--                <el-input v-model="stock.bookId" autocomplete="off"></el-input>-->
 <!--              </el-form-item>-->
 <!--              <el-form-item label="新库存">-->
 <!--                <el-input v-model="stock.stock" autocomplete="off"></el-input>-->
 <!--              </el-form-item>-->
 <!--              <el-form-item>-->
-<!--                <el-button type="primary" @click="changeStock">确定</el-button>-->
-<!--                <el-button type="primary" @click="changeDialogFormVisible">取消</el-button>-->
+<!--                <el-button type="primary" @click="changeStock">Confirm</el-button>-->
+<!--                <el-button type="primary" @click="changeDialogFormVisible">Confirm</el-button>-->
 <!--              </el-form-item>-->
 <!--            </el-form>-->
 <!--          </el-dialog>-->
@@ -230,12 +230,12 @@ export default {
     handleSizeChange(val) {
       this.params.pageSize=val
       this.getUserDetail()
-      console.log(`每页 ${val} 条`);
+      console.log(`${val} items / page`);
     },
     handleCurrentChange(val) {
       this.params.currPage=val
       this.getUserDetail()
-      console.log(`当前页: ${val}`);
+      console.log(`Current page: ${val}`);
     },
     // 表格多选框
     handleSelectionChange(val) {
@@ -263,9 +263,9 @@ export default {
     // 修改用户信息
     handleChangeStatus(row) {
       console.log([row.id])
-      this.$confirm('此操作将永久修改个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation will change personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.requestBook.get(`/library/booklendinfo/change?id=${row.id}&status=${row.status}`).then(res => {
@@ -285,7 +285,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       });
 
@@ -293,15 +293,15 @@ export default {
     // 删除
     handleDeleteRecord(row) {
       console.log([row.id])
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('[Warning]This operation will delete personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.requestBook.post("/library/booklendinfo/delete", [row.id]).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+              message: 'Delete Successfully',
               type: 'success'
             });
             this.getUserDetail()
@@ -315,7 +315,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       });
 
@@ -340,21 +340,21 @@ export default {
     //     }
     //   })
     // },
-    // 批量删除
+    // Bulk Editing
     handleDeleteUserBatch() {
       var ids = this.multipleSelection.map(item => {
         return item.id
       })
       console.log(ids)
-      this.$confirm('此操作将永久删除个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('[Warning]This operation will delete personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.request.post("/member/user/delete", ids).then(res => {
           if (res.code == 200) {
             this.$message({
-              message: '删除成功',
+              message: 'Delete Successfully',
               type: 'success'
             });
             this.getUserDetail()
@@ -368,7 +368,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       });
     },

@@ -41,8 +41,8 @@
               >
               </el-cascader>
             </el-form-item>
-            <!--            <el-form-item label="updatestatue：">-->
-            <!--              <el-select v-model="searchParams.status" placeholder="all" clearable>-->
+            <!--            <el-form-item label="Status：">-->
+            <!--              <el-select v-model="searchParams.status" placeholder="All" clearable>-->
             <!--                <el-option-->
             <!--                    v-for="item in publishStatusOptions"-->
             <!--                    :key="item.value"-->
@@ -110,7 +110,7 @@
             label="Operation"
             width="100">
           <template slot-scope="scope">
-            <el-button @click="handleDeleteCollection(scope.row)" type="primary" size="small">删除</el-button>
+            <el-button @click="handleDeleteCollection(scope.row)" type="primary" size="small">Delete</el-button>
 <!--            <el-button @click="handleReturnBook(scope.row)" type="success" size="small">Return</el-button>-->
 <!--            <el-button @click="handleCollectionBook(scope.row)" type="success" size="small">Star</el-button>-->
           </template>
@@ -203,12 +203,12 @@ export default {
     handleSizeChange(val) {
       this.params.pageSize=val
       this.getCollectionDetail()
-      console.log(`每页 ${val} 条`);
+      console.log(`${val} items / page`);
     },
     handleCurrentChange(val) {
       this.params.currPage=val
       this.getCollectionDetail()
-      console.log(`当前页: ${val}`);
+      console.log(`Current page: ${val}`);
     },
     // 表格多选框
     handleSelectionChange(val) {
@@ -240,7 +240,7 @@ export default {
       this.request.post("/member/usercollection/delete", [row.id]).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '删除成功',
+            message: 'Delete Successfully',
             type: 'success'
           });
           this.getCollectionDetail()
@@ -281,7 +281,7 @@ export default {
       this.request.post("/member/usercollection/delete", ids).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '删除成功',
+            message: 'Delete Successfully',
             type: 'success'
           });
           this.getCollectionDetail()

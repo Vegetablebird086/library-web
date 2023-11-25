@@ -41,8 +41,8 @@
               >
               </el-cascader>
             </el-form-item>
-            <el-form-item label="updatestatue：">
-              <el-select v-model="searchParams.status" placeholder="all" clearable>
+            <el-form-item label="Status：">
+              <el-select v-model="searchParams.status" placeholder="All" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -90,7 +90,7 @@
         <el-table-column
             prop="id"
             label="Number"
-            width="50">
+            width="150">
         </el-table-column>
         <el-table-column
             prop="bookName"
@@ -118,9 +118,9 @@
         </el-table-column>
         <!--        Operation-->
         <el-table-column
-            fixed="right
+            fixed="right"
             label="Operation"
-            width="180">
+            width="300">
           <template slot-scope="scope">
 
             <el-button v-if="scope.row.status == 0" @click="handleSave(scope.row)" type="primary" size="small">Shelve</el-button>
@@ -132,16 +132,16 @@
       </el-table>
 
       <el-dialog title="改变库存信息" :visible.sync="dialogFormVisible" width="30%" >
-        <el-form label-width="80px" size="small" >
-          <el-form-item label="库存编号">
+        <el-form label-width="150px" size="small" >
+          <el-form-item label="Stock Number">
             <el-input v-model="stock.bookId" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="新库存">
+          <el-form-item label="New Stock">
             <el-input v-model="stock.stock" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="changeStock">确定</el-button>
-            <el-button type="primary" @click="changeDialogFormVisible">取消</el-button>
+            <el-button type="primary" @click="changeStock">Confirm</el-button>
+            <el-button type="primary" @click="changeDialogFormVisible">Cancel</el-button>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -222,12 +222,12 @@ export default {
     handleSizeChange(val) {
       this.params.pageSize=val
       this.getBookDetail()
-      console.log(`每页 ${val} 条`);
+      console.log(`${val} items / page`);
     },
     handleCurrentChange(val) {
       this.params.currPage=val
       this.getBookDetail()
-      console.log(`当前页: ${val}`);
+      console.log(`Current page: ${val}`);
     },
     // 表格多选框
     handleSelectionChange(val) {

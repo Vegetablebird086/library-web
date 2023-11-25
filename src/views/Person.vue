@@ -1,6 +1,6 @@
 <template>
-  <el-card style="width: 500px; margin: auto">
-    <el-form label-width="80px" size="small">
+  <el-card style="width: 600px; margin: auto">
+    <el-form label-width="200px" size="small">
       <el-upload
           action="upload"
           class="avatar-uploader"
@@ -13,10 +13,10 @@
       </el-upload>
 
 
-      <el-form-item label="username" prop="username">
+      <el-form-item label="Username" prop="username">
         <el-input v-model="form.username" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="college">
+      <el-form-item label="College">
         <el-cascader
             clearable
             v-model="selectDepartmentValue"
@@ -25,7 +25,7 @@
         >
         </el-cascader>
       </el-form-item>
-      <el-form-item label="major">
+      <el-form-item label="Major">
         <el-cascader
             clearable
             v-model="selectMajorValue"
@@ -34,14 +34,14 @@
         >
         </el-cascader>
       </el-form-item>
-      <el-form-item label="class">
+      <el-form-item label="Class">
         <el-input v-model="form.classNumber" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="gender">
+      <el-form-item label="Gender">
 <!--        <el-radio v-model="1" label="1">男</el-radio>-->
 <!--        <el-radio v-model="0" label="0">女</el-radio>-->
       </el-form-item>
-      <el-form-item label="phone" prop="telephone">
+      <el-form-item label="Phone" prop="telephone">
         <el-input v-model="form.telephone" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="Books available for loan">
@@ -55,7 +55,7 @@
 
 
     <el-dialog title="菜单信息" :visible.sync="dialogFormVisible" width="30%" >
-      <el-form label-width="80px" size="small">
+      <el-form label-width="100px" size="small">
         <el-form-item label="旧密码" prop="password">
           <el-input v-model="password[0]" autocomplete="off"></el-input>
         </el-form-item>
@@ -63,8 +63,8 @@
           <el-input v-model="password[1]" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="changePassword" @blur="checkPassword">确定</el-button>
-          <el-button type="primary" @click="changeDialogFormVisible">取消</el-button>
+          <el-button type="primary" @click="changePassword" @blur="checkPassword">Confirm</el-button>
+          <el-button type="primary" @click="changeDialogFormVisible">Cancel</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -235,9 +235,9 @@ export default {
   },
    */
     change() {
-      this.$confirm('此操作将永久修改个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation will change personal information permanently, continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         console.log("quding")
@@ -261,7 +261,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       });
 
@@ -281,7 +281,7 @@ export default {
         } else {
           this.$message({
             type: 'error',
-            message: "Failed to change the password"
+            message: "Password update failed"
           })
         }
       })
@@ -321,7 +321,7 @@ export default {
       //   }).catch(() => {
       //     this.$message({
       //       type: 'info',
-      //       message: '已取消修改'
+      //       message: 'Cancel changes'
       //     });
       //   });
     // }

@@ -115,7 +115,7 @@
         <el-table-column
             fixed="right"
             label="Operation"
-            width="220">
+            width="300">
           <template slot-scope="scope">
             <el-button @click="handleLendBook(scope.row)" type="primary" size="small">Borrow</el-button>
             <el-button @click="handleReturnBook(scope.row)" type="success" size="small">Return</el-button>
@@ -198,12 +198,12 @@ export default {
     handleSizeChange(val) {
       this.params.pageSize=val
       this.getBookDetail()
-      console.log(`每页 ${val} 条`);
+      console.log(`${val} items / page`);
     },
     handleCurrentChange(val) {
       this.params.currPage=val
       this.getBookDetail()
-      console.log(`当前页: ${val}`);
+      console.log(`Current page: ${val}`);
     },
     // 表格多选框
     handleSelectionChange(val) {
@@ -298,7 +298,7 @@ export default {
            });
          } else {
            this.$message({
-             message: 'Star failed',
+             message: 'Star Failed',
              type: 'warning'
            });
          }

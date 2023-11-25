@@ -41,8 +41,8 @@
 <!--              >-->
 <!--              </el-cascader>-->
 <!--            </el-form-item>-->
-            <el-form-item label="updatestatue：">
-              <el-select v-model="searchParams.status" placeholder="all" clearable>
+            <el-form-item label="Status：">
+              <el-select v-model="searchParams.status" placeholder="All" clearable>
                 <el-option
                     v-for="item in publishStatusOptions"
                     :key="item.value"
@@ -94,7 +94,7 @@
         </el-table-column>
         <el-table-column
           align="center"
-          label="usingornot"
+          label="Enable"
           v-slot="scope"
       >
         <el-switch
@@ -106,7 +106,7 @@
         </el-switch>
       </el-table-column>
         <el-table-column
-            label="majorlist"
+            label="Major List"
             v-slot="scope"
         >
           <router-link :to="{path: '/ums/second/major', query: {departmentId: scope.row.id}}"
@@ -118,30 +118,30 @@
         <el-table-column
             fixed="right"
             label="Operation"
-            width="150">
+            width="300">
           <template slot-scope="scope">
-            <el-button @click="handleChangeuserdepartment(scope.row)" type="primary" size="small">修改</el-button>
-            <el-button @click="handleDeleteuserdepartment(scope.row)" type="primary" size="small">删除</el-button>
+            <el-button @click="handleChangeuserdepartment(scope.row)" type="primary" size="small">Modify</el-button>
+            <el-button @click="handleDeleteuserdepartment(scope.row)" type="primary" size="small">Delete</el-button>
           </template>
         </el-table-column>
 
       </el-table>
 
       <!--修改/添加信息      -->
-      <el-dialog title="添加/修改专业信息" :visible.sync="dialogFormVisible" width="30%">
-        <el-form label-width="80px" size="small" :data="userdepartment">
-          <el-form-item label="角色">
+      <el-dialog title="Add/Modify Major Information" :visible.sync="dialogFormVisible" width="30%">
+        <el-form label-width="100px" size="small" :data="userdepartment">
+          <el-form-item label="Role">
             <el-input v-model="userdepartment.id" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="角色名">
+          <el-form-item  label="Role Name">
             <el-input v-model="userdepartment.department" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="Describe">
             <el-input v-model="userdepartment.describe" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="handleAdduserdepartmentOrChangeuserdepartment">确定</el-button>
-            <el-button type="primary" @click="changeDialogFormVisible">取消</el-button>
+            <el-button type="primary" @click="handleAdduserdepartmentOrChangeuserdepartment">Confirm</el-button>
+            <el-button type="primary" @click="changeDialogFormVisible">Cancel</el-button>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -234,12 +234,12 @@ export default {
     handleSizeChange(val) {
       this.params.pageSize=val
       this.getuserdepartmentDetail()
-      console.log(`每页 ${val} 条`);
+      console.log(`${val} items / page`);
     },
     handleCurrentChange(val) {
       this.params.currPage=val
       this.getuserdepartmentDetail()
-      console.log(`当前页: ${val}`);
+      console.log(`Current page: ${val}`);
     },
     // 表格多选框
     handleSelectionChange(val) {
@@ -268,12 +268,12 @@ export default {
       this.userdepartment = {}
     },
     // 添加或修改专业
-    // 添加角色
+    // Add Role
     handleAdduserdepartmentOrChangeuserdepartment() {
       console.log(this.userdepartment)
-      this.$confirm('是否确定添加/修改？', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('Are you sure modify it？', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         if (this.userdepartment.id == null) {
@@ -286,7 +286,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消修改'
+          message: 'Cancel changes'
         });
       })
     },
@@ -294,7 +294,7 @@ export default {
       this.request.post("/member/userdepartment/save", this.userdepartment).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '添加成功',
+            message: 'Add Successfully',
             type: 'success'
           });
           this.getuserdepartmentDetail()
@@ -352,14 +352,14 @@ export default {
     //     }
     //   })
     // },
-    // 删除
+    // Delete
     handleDeleteuserdepartment(row) {
       console.log([row.id])
       this
       this.request.post("/member/userdepartment/delete", [row.id]).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '删除成功',
+            message: 'Delete Successfully',
             type: 'success'
           });
           this.getuserdepartmentDetail()
@@ -400,7 +400,7 @@ export default {
       this.request.post("/member/userdepartment/delete", ids).then(res => {
         if (res.code == 200) {
           this.$message({
-            message: '删除成功',
+            message: 'Delete Successfully',
             type: 'success'
           });
           this.getuserdepartmentDetail()

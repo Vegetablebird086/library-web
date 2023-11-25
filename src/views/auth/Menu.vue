@@ -102,7 +102,7 @@
         </el-table-column>
         <el-table-column
             align="center"
-            label="Enable or not"
+            label="Enable"
             v-slot="scope"
         >
           <el-switch
@@ -119,7 +119,7 @@
             >
           <template >
 
-            <el-button @click="changeParentId(scope.row)" type="primary" size="small">Submenu</el-button>
+            <el-button @click="changeParentId(scope.row)" type="primary" size="small">Sub Menu</el-button>
 <!--            <el-button @click="changeToParent(scope.row)" type="primary" size="small">父菜单</el-button>-->
           </template>
         </el-table-column>
@@ -128,7 +128,7 @@
             fixed="right"
 
             label="Operation"
-            width="150">
+            width="300">
           <template slot-scope="scope">
             <el-button @click="handleChangemenu(scope.row)" type="primary" size="small">Modify</el-button>
             <el-button @click="handleDeletemenu(scope.row)" type="success" size="small">Delete</el-button>
@@ -139,15 +139,15 @@
 
       <!--修改用户人信息-->
       <!--      <el-dialog title="改变库存信息" :visible.sync="dialogFormVisible" width="30%" >-->
-      <!--        <el-form label-width="80px" size="small" >-->
-      <!--          <el-form-item label="库存编号">-->
+      <!--        <el-form label-width="100px" size="small" >-->
+      <!--          <el-form-item label="Stock Number">-->
       <!--            <el-input v-model="stock.bookId" autocomplete="off"></el-input>-->
       <!--          </el-form-item>-->
       <!--          <el-form-item label="新库存">-->
       <!--            <el-input v-model="stock.stock" autocomplete="off"></el-input>-->
       <!--          </el-form-item>-->
       <!--          <el-form-item>-->
-      <!--            <el-button type="primary" @click="changeStock">确定</el-button>-->
+      <!--            <el-button type="primary" @click="changeStock">Confirm</el-button>-->
       <!--            <el-button type="primary" @click="changeDialogFormVisible">取消</el-button>-->
       <!--          </el-form-item>-->
       <!--        </el-form>-->
